@@ -7,7 +7,6 @@
 <canvas id="canvas" width=800 height=600></canvas>
 
 </body>
-<script src="lib/engine.js"></script>
 <script>
 
 
@@ -46,7 +45,7 @@ setInterval(function(){
 
   drawShape();
 
-},15);
+},20);
 
 document.body.onkeydown = function(event){
 
@@ -54,12 +53,15 @@ document.body.onkeydown = function(event){
 
   switch(event.keyCode){
     case 37: hero.x -= 10; break;
-    case 38: hero.ay = -20; break;
     case 39: hero.x += 10; break;
   }
-
 };
 
+document.body.addEventListener('keydown', function(event){
+  if(event.keyCode==38){
+    hero.ay = -20;
+  }
+});
 
 
 
