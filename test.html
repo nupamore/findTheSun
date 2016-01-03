@@ -10,8 +10,6 @@
 <script src="lib/engine.js"></script>
 <script>
 
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
 
 
 
@@ -20,8 +18,9 @@ var nemo = new Sprite(function(){
 
   this.x = 100;
 
+  this.gravity = true;
+  this.userControl = true;
   this.animator = function(){
-
   };
   this.renderer = function(){
     ctx.beginPath();
@@ -32,6 +31,7 @@ var nemo = new Sprite(function(){
 
   return this;
 });
+nemo.draw();
 
 
 
