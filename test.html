@@ -14,24 +14,42 @@
 
 
 
-var nemo = new Sprite(function(){
 
-  this.x = 100;
 
-  this.gravity = true;
-  this.userControl = true;
-  this.animator = function(){
-  };
-  this.renderer = function(){
+var player = new Sprite(function(my){
+
+  my.width = 10;
+  my.height = 10;
+
+  my.gravity = true;
+  my.userControl = true;
+
+  my.renderer(function(){
     ctx.beginPath();
     ctx.fillStyle = "rgba(0,0,0,100)";
-    ctx.rect(this.x, this.y, 100, 100);
+    ctx.rect(my.x, my.y, my.width, my.height);
     ctx.fill();
-  };
+  });
 
-  return this;
-});
-nemo.draw();
+  my.onCrash(function(type, target){
+    target.renderer(function(){
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(0,0,0,100)";
+      ctx.rect(target.x, target.y, target.width, target.height);
+      ctx.fill();
+    });
+  });
+
+}).draw(100,200);
+
+for(var i=0; i<100; i++){
+  new Sprite(function(my){
+    my.width = 50;
+    my.height = 10;
+    my.static = true;
+
+  }).draw((Math.random()*800),(Math.random()*600));
+}
 
 
 
