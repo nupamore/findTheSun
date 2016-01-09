@@ -14,33 +14,46 @@
 
 
 
-
-
 var player = new Sprite(function(my){
 
-  my.width = 10;
-  my.height = 10;
+  my.width = 50;
+  my.height = 50;
 
   my.gravity = true;
   my.userControl = true;
 
+  my.start(function(){
+    my.img = new Image();
+    my.img.src = '28309.png';
+
+    my.frame = 0;
+    my.type = 0;
+
+    setInterval(function(){
+      my.frame++;
+      if(my.frame>5)
+        my.frame=0;
+    }, 100);
+  });
+  
   my.renderer(function(){
-    ctx.beginPath();
-    ctx.fillStyle = "rgba(0,0,0,100)";
-    ctx.rect(my.x, my.y, my.width, my.height);
-    ctx.fill();
+    ctx.drawImage(my.img, my.frame*34, my.type*37, 34, 37, my.x, my.y, my.width, my.height);
   });
 
-  my.onCrash(function(type, target){
+  my.onCrash(function(direction, target){
     target.renderer(function(){
       ctx.beginPath();
       ctx.fillStyle = "rgba(0,0,0,100)";
       ctx.rect(target.x, target.y, target.width, target.height);
       ctx.fill();
     });
+
   });
 
 }).draw(100,200);
+
+
+
 
 for(var i=0; i<100; i++){
   new Sprite(function(my){
@@ -48,7 +61,8 @@ for(var i=0; i<100; i++){
     my.height = 10;
     my.static = true;
 
-  }).draw((Math.random()*800),(Math.random()*600));
+
+  }).draw(Math.random()*800, Math.random()*600);
 }
 
 
