@@ -26,41 +26,13 @@ var player = new Sprite(function(my){
 
   });
 
-  my.animate('1.png', 34, 37, function(){
-    var left = 1,
-        leftRun = 2,
-        right = 0,
-        rightRun = 3,
-        jump = 4;
-
-    // left
-    if(LEFT_ARROW){
-      my.state = leftRun;
-    }
-    else if(my.state == leftRun){
-      my.state = left;
-    }
-    // right
-    else if(RIGHT_ARROW){
-      my.state = rightRun;
-    }
-    else if(my.state == rightRun){
-      my.state = right;
-    }
-    // jump
-    if(my.jump && (my.state == left || my.state == leftRun)){
-      my.state = jump;
-    }
-    else if(!my.jump && my.state == jump){
-      my.state = left;
-    }
-    else if(my.jump && (my.state == right || my.state == rightRun)){
-      my.state = 5;
-    }
-    else if(!my.jump && my.state == 5){
-      my.state = right;
-    }
-
+  my.animate('1.png', 34, 37, {
+    left: 1,
+    leftRun: 2,
+    leftJump: 4,
+    right: 0,
+    rightRun: 3,
+    rightJump: 5
   });
 
 
