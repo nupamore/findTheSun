@@ -23,22 +23,34 @@ var player = new Sprite(function(my){
   my.userControl = true;
 
   my.start(function(){
-    my.img = new Image();
-    my.img.src = '28309.png';
 
-    my.frame = 0;
-    my.type = 0;
+  });
 
-    setInterval(function(){
-      my.frame++;
-      if(my.frame>5)
-        my.frame=0;
-    }, 100);
+  my.animate('1.png', 34, 37, function(){
+    var left = 1,
+        leftRun = 2,
+        right = 0,
+        rightRun = 3;
+
+    // left
+    if(LEFT_ARROW){
+      my.state = leftRun;
+    }
+    else if(my.state == leftRun){
+      my.state = left;
+    }
+    // right
+    else if(RIGHT_ARROW){
+      my.state = rightRun;
+    }
+    else if(my.state == rightRun){
+      my.state = right;
+    }
+    
+
+
   });
-  
-  my.renderer(function(){
-    ctx.drawImage(my.img, my.frame*34, my.type*37, 34, 37, my.x, my.y, my.width, my.height);
-  });
+
 
   my.onCrash(function(direction, target){
     target.renderer(function(){
@@ -61,6 +73,12 @@ for(var i=0; i<100; i++){
     my.height = 10;
     my.static = true;
 
+    my.renderer(function(){
+      ctx.beginPath();
+        ctx.fillStyle = "rgba(0,0,0,100)";
+        ctx.rect(my.x, my.y, my.width, my.height);
+        ctx.stroke();
+    });
 
   }).draw(Math.random()*800, Math.random()*600);
 }
