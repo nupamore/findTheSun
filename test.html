@@ -30,7 +30,8 @@ var player = new Sprite(function(my){
     var left = 1,
         leftRun = 2,
         right = 0,
-        rightRun = 3;
+        rightRun = 3,
+        jump = 4;
 
     // left
     if(LEFT_ARROW){
@@ -46,8 +47,19 @@ var player = new Sprite(function(my){
     else if(my.state == rightRun){
       my.state = right;
     }
-    
-
+    // jump
+    if(my.jump && (my.state == left || my.state == leftRun)){
+      my.state = jump;
+    }
+    else if(!my.jump && my.state == jump){
+      my.state = left;
+    }
+    else if(my.jump && (my.state == right || my.state == rightRun)){
+      my.state = 5;
+    }
+    else if(!my.jump && my.state == 5){
+      my.state = right;
+    }
 
   });
 
