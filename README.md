@@ -2,17 +2,22 @@
 
 ## Sprite()
 ### field
-- id
-- gravity
-- static
-- collision
-- userControl
-- x
-- y
-- width
-- height
-- ax
-- ay
+- Setting
+  - id
+  - width
+  - height
+- Switch
+  - gravity - 중력가속도
+  - static - 충돌시 밀려남
+  - collision - 충돌감지
+  - userControl - 키보드방향키 연결
+- State
+  - x
+  - y
+  - ax - 가속도
+  - ay
+  - crash - 충돌상태
+  - jump - 점프상태
 
 ### method
 - start( callback )  
@@ -25,12 +30,22 @@
   프레임마다 callback 호출  
 
 - onCrash( callback( direction, target ) )  
-  충돌시 callback 호출  
-  direction = 방향  
-  target = 충돌한 물체  
+  - 충돌시 callback 호출  
+  - direction - 방향  
+  - target - 충돌한 물체
+
 
 - emitCrash( direction, target )  
   충돌이벤트를 발생시킴  
+
+- animate( imgSrc, width, height, state )   
+  스프라이트의 애니메이션을 설정한다.  
+  - imgSrc - 파일명
+  - width, height - 프레임 한 장의 크기
+  - state = { left, leftRun, leftJump, right, rightRun, rightJump }  
+    해당 상태의 라인 번호
+
+
 
 - draw( x, y )  
   해당 좌표에 그리기를 시작함
