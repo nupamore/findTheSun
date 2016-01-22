@@ -22,14 +22,14 @@ var player = new Sprite(function(my){
   my.gravity = true;
   my.tag = 'player';
 
-  my.animate('1.png', 34, 37, {
+  my.animate('pikachu.png', 18, 18, {
     left: 1,
-    leftRun: 2,
-    leftJump: 4,
-    right: 0,
-    rightRun: 3,
-    rightJump: 5
-  });
+    leftRun: 1,
+    leftJump: 0,
+    right: 2,
+    rightRun: 2,
+    rightJump: 0
+  }, 3);
 
 
   my.onCrash(function(direction, target){
