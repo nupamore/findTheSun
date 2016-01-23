@@ -16,8 +16,8 @@
 
 var player = new Sprite(function(my){
 
-  my.width = 50;
-  my.height = 50;
+  my.width = 32;
+  my.height = 32;
 
   my.gravity = true;
   my.tag = 'player';
@@ -29,7 +29,7 @@ var player = new Sprite(function(my){
     right: 2,
     rightRun: 2,
     rightJump: 0
-  }, 3);
+  }, 4);
 
 
   my.onCrash(function(direction, target){
@@ -44,10 +44,64 @@ var player = new Sprite(function(my){
 
 }).draw(100,200);
 
+var pika = new Sprite(function(my){
+
+  my.width = 50;
+  my.height = 50;
+
+  my.gravity = true;
+
+  my.animate('pikachu.png', 18, 18, {
+    left: 1,
+    leftRun: 1,
+    leftJump: 0,
+    right: 2,
+    rightRun: 2,
+    rightJump: 0
+  }, 4);
+
+}).draw(Math.random()*800, Math.random()*600);
 
 
+var pika2 = new Sprite(function(my){
 
-for(var i=0; i<100; i++){
+  my.width = 50;
+  my.height = 50;
+
+  my.gravity = true;
+
+  my.animate('pikachu.png', 18, 18, {
+    left: 1,
+    leftRun: 1,
+    leftJump: 0,
+    right: 2,
+    rightRun: 2,
+    rightJump: 0
+  }, 4);
+
+}).draw(Math.random()*800, Math.random()*600);
+
+
+var pika3 = new Sprite(function(my){
+
+  my.width = 50;
+  my.height = 50;
+
+  my.gravity = true;
+
+  my.animate('pikachu.png', 18, 18, {
+    left: 1,
+    leftRun: 1,
+    leftJump: 0,
+    right: 2,
+    rightRun: 2,
+    rightJump: 0
+  }, 4);
+
+}).draw(Math.random()*800, Math.random()*600);
+
+
+for(var i=0; i<50; i++){
   new Sprite(function(my){
     my.width = 50;
     my.height = 10;
