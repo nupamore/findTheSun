@@ -18,6 +18,7 @@
   - ay
   - crash - 충돌상태
   - jump - 점프상태
+  - direct - 방향상태
 
 ### method
 - start( callback )  
@@ -38,12 +39,13 @@
 - emitCrash( direction, target )  
   충돌이벤트를 발생시킴  
 
-- animate( imgSrc, width, height, state )   
+- animate( imgSrc, width, height, state , frame)   
   스프라이트의 애니메이션을 설정한다.  
   - imgSrc - 파일명
   - width, height - 프레임 한 장의 크기
   - state = { left, leftRun, leftJump, right, rightRun, rightJump }  
     해당 상태의 라인 번호
+  - frame - 상태 하나의 프레임 개수
 
 
 

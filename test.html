@@ -23,10 +23,10 @@ var player = new Sprite(function(my){
   my.tag = 'player';
 
   my.animate('pikachu.png', 18, 18, {
-    left: 1,
+    left: 0,
     leftRun: 1,
     leftJump: 0,
-    right: 2,
+    right: 0,
     rightRun: 2,
     rightJump: 0
   }, 4);
@@ -44,64 +44,36 @@ var player = new Sprite(function(my){
 
 }).draw(100,200);
 
-var pika = new Sprite(function(my){
 
-  my.width = 50;
-  my.height = 50;
+var pika = [];
+setInterval(function(){
+  pika.push(new Sprite(function(my){
 
-  my.gravity = true;
+    my.width = 50;
+    my.height = 50;
 
-  my.animate('pikachu.png', 18, 18, {
-    left: 1,
-    leftRun: 1,
-    leftJump: 0,
-    right: 2,
-    rightRun: 2,
-    rightJump: 0
-  }, 4);
+    my.gravity = true;
+    my.direct = 'leftwalk';
 
-}).draw(Math.random()*800, Math.random()*600);
+    my.animate('pikachu.png', 18, 18, {
+      left: 1,
+      leftRun: 1,
+      leftJump: 0,
+      right: 2,
+      rightRun: 2,
+      rightJump: 0
+    }, 4);
 
+    my.onCrash(function(target){
+      my.ay = -Math.random()*10;
+    });
 
-var pika2 = new Sprite(function(my){
-
-  my.width = 50;
-  my.height = 50;
-
-  my.gravity = true;
-
-  my.animate('pikachu.png', 18, 18, {
-    left: 1,
-    leftRun: 1,
-    leftJump: 0,
-    right: 2,
-    rightRun: 2,
-    rightJump: 0
-  }, 4);
-
-}).draw(Math.random()*800, Math.random()*600);
+  }).draw(Math.random()*100+600, Math.random()*100));
+}, 500);
 
 
-var pika3 = new Sprite(function(my){
 
-  my.width = 50;
-  my.height = 50;
-
-  my.gravity = true;
-
-  my.animate('pikachu.png', 18, 18, {
-    left: 1,
-    leftRun: 1,
-    leftJump: 0,
-    right: 2,
-    rightRun: 2,
-    rightJump: 0
-  }, 4);
-
-}).draw(Math.random()*800, Math.random()*600);
-
-
-for(var i=0; i<50; i++){
+for(var i=0; i<20; i++){
   new Sprite(function(my){
     my.width = 50;
     my.height = 10;
@@ -114,7 +86,9 @@ for(var i=0; i<50; i++){
         ctx.stroke();
     });
 
-  }).draw(Math.random()*800, Math.random()*600);
+    my.draw(i*(my.width+40), 500);
+
+  });
 }
 
 
