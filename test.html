@@ -21,6 +21,69 @@ var player = new Sprite(function(my){
 
   my.gravity = true;
   my.tag = 'player';
+  my.moveSpeed = 10;
+
+  my.animate('pikachu.png', 18, 18, {
+    left: 0,
+    leftRun: 1,
+    leftJump: 0,
+    right: 0,
+    rightRun: 2,
+    rightJump: 0
+  }, 4);
+
+
+  my.onCrash(function(direction, target){
+      if(target.tag == 'ball'){
+        my.dead();
+      }else{
+    target.renderer(function(){
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(0,0,0,100)";
+      ctx.rect(target.x, target.y, target.width, target.height);
+      ctx.fill();
+    });
+  }
+  });
+
+}).draw(100,200);
+
+
+/*var pika = [];
+setInterval(function(){
+  pika.push(new Sprite(function(my){
+
+    my.width = 50;
+    my.height = 50;
+
+    my.gravity = true;
+    my.direct = 'leftwalk';
+    my.moveSpeed = Math.random()*20;
+
+    my.animate('pikachu.png', 18, 18, {
+      left: 1,
+      leftRun: 1,
+      leftJump: 0,
+      right: 2,
+      rightRun: 2,
+      rightJump: 0
+    }, 4);
+
+    my.onCrash(function(target){
+      my.ay = -Math.random()*7;
+    });
+
+  }).draw(Math.random()*100+600, Math.random()*100));
+}, 500);
+*/
+
+
+var grass = new Sprite(function(my){
+
+  my.width = 32;
+  my.height = 32;
+
+  my.gravity = true;
 
   my.animate('pikachu.png', 18, 18, {
     left: 0,
@@ -42,20 +105,25 @@ var player = new Sprite(function(my){
 
   });
 
-}).draw(100,200);
+}).draw(550,400);
 
 
-var pika = [];
+var ball = [];
 setInterval(function(){
-  pika.push(new Sprite(function(my){
+  ball.push(new Sprite(function(my){
 
-    my.width = 50;
-    my.height = 50;
+    my.width = 20;
+    my.height = 20;
+    my.tag = 'ball';
 
-    my.gravity = true;
-    my.direct = 'leftwalk';
+    my.gravity = false;
 
-    my.animate('pikachu.png', 18, 18, {
+    my.update(function(){
+        my.x -= 1 ;
+
+    });
+
+    my.animate('a.png', 18, 18, {
       left: 1,
       leftRun: 1,
       leftJump: 0,
@@ -64,19 +132,18 @@ setInterval(function(){
       rightJump: 0
     }, 4);
 
-    my.onCrash(function(target){
-      my.ay = -Math.random()*10;
-    });
 
-  }).draw(Math.random()*100+600, Math.random()*100));
-}, 500);
+  }).draw(grass.x - 20, grass.y - 1));
+}, 2000);
+
+
 
 
 
 for(var i=0; i<20; i++){
   new Sprite(function(my){
     my.width = 50;
-    my.height = 10;
+    my.height = 50;
     my.static = true;
 
     my.renderer(function(){
