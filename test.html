@@ -49,33 +49,6 @@ var player = new Sprite(function(my){
 }).draw(100,200);
 
 
-/*var pika = [];
-setInterval(function(){
-  pika.push(new Sprite(function(my){
-
-    my.width = 50;
-    my.height = 50;
-
-    my.gravity = true;
-    my.direct = 'leftwalk';
-    my.moveSpeed = Math.random()*20;
-
-    my.animate('pikachu.png', 18, 18, {
-      left: 1,
-      leftRun: 1,
-      leftJump: 0,
-      right: 2,
-      rightRun: 2,
-      rightJump: 0
-    }, 4);
-
-    my.onCrash(function(target){
-      my.ay = -Math.random()*7;
-    });
-
-  }).draw(Math.random()*100+600, Math.random()*100));
-}, 500);
-*/
 
 
 var grass = new Sprite(function(my){
@@ -117,20 +90,14 @@ setInterval(function(){
     my.tag = 'ball';
 
     my.gravity = false;
+    my.state = 'leftwalk';
+    my.moveSpeed = 10;
 
-    my.update(function(){
-        my.x -= 1 ;
-
+    my.renderer(function(){
+      my.img = new Image();
+      my.img.src = 'a.png';
+      ctx.drawImage(my.img, my.x, my.y, my.width, my.height);
     });
-
-    my.animate('a.png', 18, 18, {
-      left: 1,
-      leftRun: 1,
-      leftJump: 0,
-      right: 2,
-      rightRun: 2,
-      rightJump: 0
-    }, 4);
 
 
   }).draw(grass.x - 20, grass.y - 1));
