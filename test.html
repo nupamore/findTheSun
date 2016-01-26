@@ -67,12 +67,31 @@ var grass = new Sprite(function(my){
     rightJump: 0
   }, 4);
 
+  my.remove('crashes');
 
   my.onCrash(function(direction, target){
+<<<<<<< HEAD
     if(target.tag == 'player'){
       my.dead();
     }
 
+=======
+    if(target.tag=='ball') return;
+
+    switch(direction){
+      case 'bottom':
+        my.y = target.y - my.height;
+        my.ay = 0;
+        my.jump = false;
+      break;
+      case 'top':
+        my.y = target.y + target.height;
+        my.ay = 0;
+      break;
+      case 'left': my.x = target.x - my.width; break;
+      case 'right': my.x = target.x + target.width; break;
+    }
+>>>>>>> origin/master
   });
 
 }).draw(550,400);
@@ -96,8 +115,10 @@ setInterval(function(){
       ctx.drawImage(my.img, my.x, my.y, my.width, my.height);
     });
 
+    my.remove('crashes');
 
-  }).draw(grass.x - 20, grass.y - 1));
+
+  }).draw(grass.x, grass.y));
 }, 2000);
 
 
