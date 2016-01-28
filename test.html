@@ -42,7 +42,40 @@ var player = new Sprite(function(my){
 
   });
 
-}).draw(100,200);
+}).draw(720,300);
+
+
+var ball = [];
+setInterval(function(){
+  if(sprites[grass.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
+    ball.push(new Sprite(function(my){
+
+      my.width = 20;
+      my.height = 20;
+      my.tag = 'ball';
+
+      my.xup = grass.x - player.x;
+      my.yup = grass.y - player.y;
+
+      my.distance = Math.sqrt(Math.pow(my.xup, 2) + Math.pow(my.xup, 2));
+
+      my.ax = -my.xup/my.distance;
+      my.ay = -my.yup/my.distance;
+
+      my.gravity = false;
+
+      my.renderer(function(){
+        my.img = new Image();
+        my.img.src = 'a.png';
+        ctx.drawImage(my.img, my.x, my.y, my.width, my.height);
+      });
+
+      my.remove('crashes');
+
+
+    }).draw(grass.x, grass.y));
+  }
+}, 2000);
 
 
 var pika = [];
