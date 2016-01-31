@@ -18,7 +18,7 @@
   - ay
   - crash - 충돌상태
   - jump - 점프상태
-  - direct - 방향상태
+  - state - 방향상태
 
 ### method
 - start( callback )  
@@ -51,8 +51,17 @@
 
 - draw( x, y )  
   해당 좌표에 그리기를 시작함
-- end()  
+- dead()  
   그리기 중단
+
+---
+## Camera
+### field
+  - target - 카메라의 중심이 되는 게임object 지정  
+  - marginX, marginY - 캔버스 여백 수치 지정
+
+### method
+  - set - target에 맞춰 Camera 세팅
 
 ---
 
