@@ -13,8 +13,12 @@ var Weed = function(x, y){
       leftJump: 0,
       right: 0,
       rightRun: 2,
-      rightJump: 0
+      rightJump: 0,
+      leftbehave: 1,
+      rightbehave: 2
     }, 4);
+
+    my.ani.repeat = true;
 
     my.remove('crashes');
 
@@ -22,6 +26,7 @@ var Weed = function(x, y){
 
       if(target.tag == 'player'){
         my.dead();
+        clearInterval(ballshot);
       }
 
 
@@ -45,16 +50,31 @@ var Weed = function(x, y){
 
   }).draw(x, y);
 
-  setInterval(function(){
+  var ballshot = setInterval(function(){
     if(sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
       new Sprite(function(my){
-
         my.width = 20;
         my.height = 20;
         my.tag = 'ball';
 
         var xup = weed.x - player.x;
         var yup = weed.y - player.y;
+
+        // 애니메이션 변환
+        var before = weed.state;
+        if(xup >= 0){
+          weed.state = 'leftbehave';
+        }
+        if(xup < 0){
+          weed.state = 'rightbehave';
+        }
+        weed.ani.repeat = false;
+
+        setTimeout(function(){
+          weed.state = before;
+          weed.ani.repeat = true;
+        }, 600);
+        //
 
         var distance = Math.sqrt(Math.pow(xup, 2) + Math.pow(yup, 2));
 

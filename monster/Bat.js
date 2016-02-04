@@ -1,27 +1,28 @@
 
-var Bat = function(x, y){
+var Bat = function(x, y, speed){
 
   var bat = new Sprite(function(my){
 
     my.width = 32;
     my.height = 32;
+    my.moveSpeed = speed || 10;
 
     my.gravity = false;
-    my.directSW = false;
+    var directSW = false;
 
     my.update(function(){
-      if(my.directSW == false){
-        my.x += 2;
-      }else if(my.directSW == true){
-        my.x -= 2;
+      if(directSW == false){
+        my.state = 'rightwalk';
+      }else if(directSW == true){
+        my.state = 'leftwalk';
       }
     });
 
     setInterval(function(){
-      if(my.directSW == false){
-        my.directSW = true;
-      }else if(my.directSW == true){
-        my.directSW = false;
+      if(directSW == false){
+        directSW = true;
+      }else if(directSW == true){
+        directSW = false;
       }
     }, 1000);
 
