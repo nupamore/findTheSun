@@ -53,20 +53,12 @@ var Mouse = function(x, y, speed){
           my.ay = 0;
         break;
         case 'left':
-          my.x = target.x - my.width;
-          if(directSW == false){
-            directSW = true;
-          }else if(directSW == true){
-            directSW = false;
-          }
+          my.x = target.x + target.width;
+          directSW = false;
         break;
         case 'right':
-          my.x = target.x + target.width;
-          if(directSW == false){
-            directSW = true;
-          }else if(directSW == true){
-            directSW = false;
-          }
+          my.x = target.x - my.width;
+          directSW = true;
         break;
       }
 
