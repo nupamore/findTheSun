@@ -10,6 +10,7 @@
 <script src="lib/engine.js"></script>
 <script src="monster/Weed.js"></script>
 <script src="monster/Bat.js"></script>
+<script src="monster/Mouse.js"></script>
 
 <script>
 
@@ -54,6 +55,7 @@ var player = new Sprite(function(my){
 new Weed(400,300);
 new Weed(1200,300);
 new Bat(800,400);
+new Mouse(500,400);
 
 for(var i=0; i<40; i++){
   new Sprite(function(my){
@@ -68,7 +70,25 @@ for(var i=0; i<40; i++){
         ctx.stroke();
     });
 
-    my.draw(i*(my.width+40), 500);
+    my.draw(i*(my.width+1), 500);
+
+  });
+}
+
+for(var i=0; i<20; i++){
+  new Sprite(function(my){
+    my.width = 50;
+    my.height = 50;
+    my.static = true;
+
+    my.renderer(function(){
+      ctx.beginPath();
+        ctx.fillStyle = "rgba(0,0,0,100)";
+        ctx.rect(my.x, my.y, my.width, my.height);
+        ctx.stroke();
+    });
+
+    my.draw(i*(my.width+100), 450);
 
   });
 }

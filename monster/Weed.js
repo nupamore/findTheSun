@@ -25,8 +25,12 @@ var Weed = function(x, y){
     my.onCrash(function(direction, target){
 
       if(target.tag == 'player'){
-        my.dead();
-        clearInterval(ballshot);
+        if(direction == 'top'){
+          my.dead();
+          clearInterval(ballshot);
+        }else {
+          target.dead();
+        }
       }
 
 
