@@ -1,9 +1,10 @@
-var Mouse = function(x, y, speed){
+var Mouse = function(x, y, speed, w, h){
   var mouse = new Sprite(function(my){
 
-    my.width = 15;
-    my.height = 15;
+    my.width = w || 20;
+    my.height = h || 20;
     my.moveSpeed = speed || 10;
+    my.tag = 'monster';
 
     my.gravity = true;
     my.ani.repeat = true;
@@ -41,6 +42,7 @@ var Mouse = function(x, y, speed){
       }
 
       if(target.tag == 'ball') return;
+      if(target.tag == 'monster') return;
 
       switch(direction){
         case 'bottom':

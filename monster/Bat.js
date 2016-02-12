@@ -5,6 +5,7 @@ var Bat = function(x, y, speed){
     my.width = 32;
     my.height = 32;
     my.moveSpeed = speed || 10;
+    my.tag = 'monster';
 
     my.gravity = false;
     var directSW = false;
@@ -48,6 +49,7 @@ var Bat = function(x, y, speed){
 
 
       if(target.tag=='ball') return;
+      if(target.tag=='monster') return;
 
       switch(direction){
         case 'bottom':

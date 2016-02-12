@@ -4,8 +4,9 @@ var Weed = function(x, y){
 
     my.width = 32;
     my.height = 32;
+    my.tag = 'monster';
 
-    my.gravity = false;
+    my.gravity = true;
 
     my.animate('pikachu.png', 18, 18, {
       left: 0,
@@ -35,6 +36,8 @@ var Weed = function(x, y){
 
 
       if(target.tag=='ball') return;
+      if(target.tag == 'monster') return;
+
 
       switch(direction){
         case 'bottom':

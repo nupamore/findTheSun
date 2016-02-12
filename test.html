@@ -11,6 +11,7 @@
 <script src="monster/Weed.js"></script>
 <script src="monster/Bat.js"></script>
 <script src="monster/Mouse.js"></script>
+<script src="map/Map.js"></script>
 
 <script>
 
@@ -52,46 +53,16 @@ var player = new Sprite(function(my){
 
 }).draw(100,200);
 
-new Weed(400,300);
+new Weed(600,300);
+new Weed(900,300);
 new Weed(1200,300);
 new Bat(800,400);
-new Mouse(500,400);
+new Mouse(500,400,20);
+new Mouse(700,400,15);
+new Mouse(300,400);
+new Mouse(300,400,17,30,30);
 
-for(var i=0; i<40; i++){
-  new Sprite(function(my){
-    my.width = 50;
-    my.height = 50;
-    my.static = true;
 
-    my.renderer(function(){
-      ctx.beginPath();
-        ctx.fillStyle = "rgba(0,0,0,100)";
-        ctx.rect(my.x, my.y, my.width, my.height);
-        ctx.stroke();
-    });
-
-    my.draw(i*(my.width+1), 500);
-
-  });
-}
-
-for(var i=0; i<20; i++){
-  new Sprite(function(my){
-    my.width = 50;
-    my.height = 50;
-    my.static = true;
-
-    my.renderer(function(){
-      ctx.beginPath();
-        ctx.fillStyle = "rgba(0,0,0,100)";
-        ctx.rect(my.x, my.y, my.width, my.height);
-        ctx.stroke();
-    });
-
-    my.draw(i*(my.width+100), 450);
-
-  });
-}
 
 Camera.target = player;
 if(sprites[player.id]){
