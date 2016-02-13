@@ -26,7 +26,7 @@ var Bat = function(x, y, speed){
       }
     }, 1000);
 
-    my.animate('pikachu.png', 18, 18, {
+    my.animate('img/pikachu.png', 18, 18, {
       left: 0,
       leftRun: 1,
       leftJump: 0,
@@ -61,8 +61,8 @@ var Bat = function(x, y, speed){
           my.y = target.y + target.height;
           my.ay = 0;
         break;
-        case 'left': my.x = target.x - my.width; break;
-        case 'right': my.x = target.x + target.width; break;
+        case 'right': my.x = target.x - my.width; break;
+        case 'left': my.x = target.x + target.width; break;
       }
 
     });

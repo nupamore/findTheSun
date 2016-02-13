@@ -8,7 +8,7 @@ var Weed = function(x, y){
 
     my.gravity = true;
 
-    my.animate('pikachu.png', 18, 18, {
+    my.animate('img/pikachu.png', 18, 18, {
       left: 0,
       leftRun: 1,
       leftJump: 0,
@@ -49,8 +49,8 @@ var Weed = function(x, y){
           my.y = target.y + target.height;
           my.ay = 0;
         break;
-        case 'left': my.x = target.x - my.width; break;
-        case 'right': my.x = target.x + target.width; break;
+        case 'right': my.x = target.x - my.width; break;
+        case 'left': my.x = target.x + target.width; break;
       }
 
     });
@@ -93,7 +93,7 @@ var Weed = function(x, y){
 
         my.renderer(function(){
           my.img = new Image();
-          my.img.src = 'a.png';
+          my.img.src = 'img/ball.png';
           ctx.drawImage(my.img, my.x, my.y, my.width, my.height);
         });
 

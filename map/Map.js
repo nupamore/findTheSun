@@ -1,54 +1,46 @@
 
-for(var i=0; i<10; i++){
-  new Sprite(function(my){
+// background
+new Sprite(function(my){
+  my.width = 800;
+  my.height = 600;
+  my.collision = false;
+  my.tag = 'background';
+
+  my.renderer(function(){
+    my.ani.img = new Image();
+    my.ani.img.src = 'img/background.png';
+    ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+  });
+
+  my.draw(0, 0);
+});
+
+// ground
+var ground = function(){
+  return new Sprite(function(my){
     my.width = 50;
     my.height = 50;
     my.static = true;
 
     my.renderer(function(){
-      ctx.beginPath();
-        ctx.fillStyle = "rgba(0,0,0,100)";
-        ctx.rect(my.x, my.y, my.width, my.height);
-        ctx.stroke();
+      my.ani.img = new Image();
+      my.ani.img.src = 'img/tile.png';
+      ctx.drawImage(my.ani.img, 196*1, 196*2, 196, 196, my.x, my.y, my.width, my.height);
     });
-
-    my.draw(i*(my.width+1)+250, 500);
-
   });
+};
+
+for(var i=0; i<10; i++){
+  var g = ground();
+  g.draw(i*(g.width)+250, 500);
 }
 
 for(var i=0; i<5; i++){
-  new Sprite(function(my){
-    my.width = 50;
-    my.height = 50;
-    my.static = true;
-
-    my.renderer(function(){
-      ctx.beginPath();
-        ctx.fillStyle = "rgba(0,0,0,100)";
-        ctx.rect(my.x, my.y, my.width, my.height);
-        ctx.stroke();
-    });
-
-    my.draw(i*(my.width+1), 450);
-
-  });
+  var g = ground();
+  g.draw(i*(g.width), 450);
 }
 
 for(var i=0; i<10; i++){
-  new Sprite(function(my){
-    my.width = 50;
-    my.height = 50;
-    my.static = true;
-
-    my.renderer(function(){
-      ctx.beginPath();
-        ctx.fillStyle = "rgba(0,0,0,100)";
-        ctx.rect(my.x, my.y, my.width, my.height);
-        ctx.stroke();
-    });
-
-    my.draw(i*(my.width+1)+750, 450);
-
-  });
+  var g = ground();
+  g.draw(i*(g.width)+750, 450);
 }
