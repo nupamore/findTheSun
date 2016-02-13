@@ -15,62 +15,67 @@
 
 <script>
 
+var player;
+var gameStart = function(){
+
+  initMap();
+
+  player = new Sprite(function(my){
+
+    my.width = 32;
+    my.height = 32;
+
+    my.gravity = true;
+    my.tag = 'player';
+    my.moveSpeed = 10;
+
+    my.animate('img/pikachu.png', 18, 18, {
+      left: 0,
+      leftRun: 1,
+      leftJump: 0,
+      right: 0,
+      rightRun: 2,
+      rightJump: 0
+    }, 4);
+
+
+    my.onCrash(function(direction, target){
+        if(target.tag == 'ball'){
+          my.dead();
+        }else{
+          target.renderer(function(){
+            ctx.beginPath();
+            ctx.fillStyle = "rgba(0,0,0,100)";
+            ctx.rect(target.x, target.y, target.width, target.height);
+            //ctx.fill();
+          });
+        }
+    });
+
+  }).draw(100,200);
+
+  new Weed(600,300);
+  new Weed(900,300);
+  new Weed(1200,300);
+  new Bat(800,400);
+
+  new Mouse(500,400,20);
+  new Mouse(700,400,15);
+  new Mouse(300,400);
+  new Mouse(300,400,17,30,30);
 
 
 
+  Camera.target = player;
+  if(sprites[player.id]){
+    setInterval(function(){
+      Camera.set();
+    }, 10);
+  }
+};
 
-var player = new Sprite(function(my){
-
-  my.width = 32;
-  my.height = 32;
-
-  my.gravity = true;
-  my.tag = 'player';
-  my.moveSpeed = 10;
-
-  my.animate('img/pikachu.png', 18, 18, {
-    left: 0,
-    leftRun: 1,
-    leftJump: 0,
-    right: 0,
-    rightRun: 2,
-    rightJump: 0
-  }, 4);
-
-
-  my.onCrash(function(direction, target){
-      if(target.tag == 'ball'){
-        my.dead();
-      }else{
-        target.renderer(function(){
-          ctx.beginPath();
-          ctx.fillStyle = "rgba(0,0,0,100)";
-          ctx.rect(target.x, target.y, target.width, target.height);
-          //ctx.fill();
-        });
-      }
-  });
-
-}).draw(100,200);
-
-new Weed(600,300);
-new Weed(900,300);
-new Weed(1200,300);
-new Bat(800,400);
-
-new Mouse(500,400,20);
-new Mouse(700,400,15);
-new Mouse(300,400);
-new Mouse(300,400,17,30,30);
-
-
-
-Camera.target = player;
-if(sprites[player.id]){
-  setInterval(function(){
-    Camera.set();
-  }, 10);
-}
+if(confirm( 'play game?' )) 
+  gameStart();
 
 </script>
 </html>
