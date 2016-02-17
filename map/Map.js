@@ -31,6 +31,36 @@ var initMap = function(){
     });
   };
 
+  var inground = function(){
+    return new Sprite(function(my){
+      my.width = 50;
+      my.height = 50;
+      my.static = true;
+
+      my.renderer(function(){
+        my.ani.img = new Image();
+        my.ani.img.src = 'img/tile.png';
+        ctx.drawImage(my.ani.img, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+      });
+    });
+  };
+
+  var branch = function(){
+    return new Sprite(function(my){
+      my.width = 50;
+      my.height = 20;
+      my.tag = 'branch';
+      my.static = true;
+
+      my.renderer(function(){
+        my.ani.img = new Image();
+        my.ani.img.src = 'img/tile.png';
+        ctx.drawImage(my.ani.img, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+      });
+
+    });
+  };
+
   for(var i=0; i<10; i++){
     var g = ground();
     g.draw(i*(g.width)+250, 500);
@@ -41,8 +71,53 @@ var initMap = function(){
     g.draw(i*(g.width), 450);
   }
 
-  for(var i=0; i<10; i++){
+  for(var i=0; i<12; i++){
     var g = ground();
     g.draw(i*(g.width)+750, 450);
+  }
+
+  for(var i=0; i<7; i++){
+    var g = ground();
+    g.draw(i*(g.width)+1350, 500);
+  }
+
+  for(var i=0; i<6; i++){
+    var g = ground();
+    g.draw(i*(g.width)+1700, 475);
+  }
+
+  for(var i=0; i<10; i++){
+    var g = ground();
+    g.draw(i*(g.width)+2000, 425);
+  }
+
+  for(var i=0; i<8; i++){
+    var g = ground();
+    g.draw(i*(g.width)+2500, 375);
+  }
+
+  for(var i=0; i<8; i++){
+    var g = ground();
+    g.draw(i*(g.width)+2900, 350);
+  }
+
+  for(var i=0; i<4; i++){
+    var g = inground();
+    g.draw(3250, i*(g.height)+400);
+  }
+
+  for(var i=0; i<5; i++){
+    var g = ground();
+    g.draw(i*(g.width)+3300, 550);
+  }
+
+  for(var i=0; i<4; i++){
+    var g = ground();
+    g.draw(i*(g.width)+3500, 525);
+  }
+
+  for(var i=0; i<1; i++){
+    var g = branch();
+    g.draw(400, 400);
   }
 };
