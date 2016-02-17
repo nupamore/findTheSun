@@ -54,6 +54,7 @@ var initMap = function(){
         ctx.drawImage(tileImage, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
       });
 
+
     });
   };
 
@@ -112,8 +113,15 @@ var initMap = function(){
     g.draw(i*(g.width)+3500, 525);
   }
 
-  for(var i=0; i<10; i++){
+  for(var i=0; i<3; i++){
     var g = branch();
-    g.draw(400+(i*50), 450-(i*10));
+    g.draw(3650, 470-(i*100));
   }
+
+  for(var i=0; i<6; i++){
+    var g = inground();
+    g.draw(3700, 525-(i*50));
+  }
+
+
 };

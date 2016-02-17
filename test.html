@@ -50,6 +50,12 @@ var gameStart = function(){
           my.y = target.y - my.height;
           my.ay = 0;
           my.jump = false;
+          setTimeout(function(){
+            target.dead();
+          },1000)
+          setTimeout(function(){
+            target.draw();
+          },3000)
         }
       }
       else{
@@ -70,7 +76,7 @@ var gameStart = function(){
 
     });
 
-  }).draw(100,200);
+  }).draw(3000,200);
 
 /*
   new Weed(600,300);
