@@ -116,8 +116,8 @@ var initMap = function(){
     g.draw(i*(g.width)+3500, 525);
   }
 
-  for(var i=0; i<1; i++){
+  for(var i=0; i<10; i++){
     var g = branch();
-    g.draw(400, 400);
+    g.draw(400+(i*50), 450-(i*10));
   }
 };
