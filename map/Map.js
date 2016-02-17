@@ -16,6 +16,8 @@ var initMap = function(){
     my.draw(0, 0);
   });
 
+  var tileImage = new Image();
+  tileImage.src = 'img/tile.png';
   // ground
   var ground = function(){
     return new Sprite(function(my){
@@ -24,9 +26,7 @@ var initMap = function(){
       my.static = true;
 
       my.renderer(function(){
-        my.ani.img = new Image();
-        my.ani.img.src = 'img/tile.png';
-        ctx.drawImage(my.ani.img, 196*1, 196*2, 196, 196, my.x, my.y, my.width, my.height);
+        ctx.drawImage(tileImage, 196*1, 196*2, 196, 196, my.x, my.y, my.width, my.height);
       });
     });
   };
@@ -38,9 +38,7 @@ var initMap = function(){
       my.static = true;
 
       my.renderer(function(){
-        my.ani.img = new Image();
-        my.ani.img.src = 'img/tile.png';
-        ctx.drawImage(my.ani.img, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+        ctx.drawImage(tileImage, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
       });
     });
   };
@@ -53,9 +51,7 @@ var initMap = function(){
       my.static = true;
 
       my.renderer(function(){
-        my.ani.img = new Image();
-        my.ani.img.src = 'img/tile.png';
-        ctx.drawImage(my.ani.img, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+        ctx.drawImage(tileImage, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
       });
 
     });
