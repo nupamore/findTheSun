@@ -27,7 +27,7 @@ var gameStart = function(){
 
     my.gravity = true;
     my.tag = 'player';
-    my.moveSpeed = 50;
+    my.moveSpeed = 20;
 
     my.animate('img/pikachu.png', 18, 18, {
       left: 0,
@@ -76,9 +76,9 @@ var gameStart = function(){
 
     });
 
-  }).draw(3000,200);
+  }).draw(100,200);
 
-/*
+
   new Weed(600,300);
   new Weed(900,300);
   new Weed(1200,300);
@@ -88,7 +88,7 @@ var gameStart = function(){
   new Mouse(700,400,15);
   new Mouse(300,400);
   new Mouse(300,400,17,30,30);
-*/
+
 
 
   Camera.target = player;

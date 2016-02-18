@@ -98,6 +98,7 @@ var initMap = function(){
     g.draw(i*(g.width)+2900, 350);
   }
 
+  //stage 2
   for(var i=0; i<4; i++){
     var g = inground();
     g.draw(3250, i*(g.height)+400);
@@ -123,5 +124,84 @@ var initMap = function(){
     g.draw(3700, 525-(i*50));
   }
 
+  for(var i=0; i<8; i++){
+    var g = ground();
+    g.draw(3700+(i*g.width), 225);
+  }
+
+  for(var i=0; i<6; i++){
+    var g = inground();
+    g.draw(4050, 525-(i*50));
+  }
+
+  for(var i=0; i<3; i++){
+    var g = branch();
+    g.draw(4100, 470-(i*100));
+  }
+
+  for(var i=0; i<8; i++){
+    var g = ground();
+    g.draw(4100+(i*g.width), 525);
+  }
+
+  for(var i=0; i<10; i++){
+    var g = inground();
+    g.draw(4275, 370-(i*50));
+  }
+
+  for(var i=0; i<2; i++){
+    var g = branch();
+    g.draw(4225, 400-(i*100));
+  }
+
+  for(var i=0; i<2; i++){
+    var g = branch();
+    g.draw(4325, 400-(i*100));
+  }
+
+  for(var i=0; i<6; i++){
+    var g = inground();
+    g.draw(4500, 525-(i*50));
+  }
+
+  for(var i=0; i<3; i++){
+    var g = branch();
+    g.draw(4450, 470-(i*100));
+  }
+
+  for(var i=0; i<8; i++){
+    var g = ground();
+    g.draw(4500+(i*g.width), 225);
+  }
+
+  for(var i=0; i<6; i++){
+    var g = inground();
+    g.draw(4800, 525-(i*50));
+  }
+
+  for(var i=0; i<5; i++){
+    var g = ground();
+    g.draw(4850+(i*g.width), 525);
+  }
+
+  for(var i=0; i<5; i++){
+    var g = ground();
+    g.draw(5100+(i*g.width), 475);
+  }
+
+  for(var i=0; i<5; i++){
+    var g = ground();
+    g.draw(5350+(i*g.width), 425);
+  }
+
+  for(var i=0; i<5; i++){
+    var g = ground();
+    g.draw(5600+(i*g.width), 375);
+  }
+
+  for(var i=0; i<5; i++){
+    var g = ground();
+    g.draw(5000+(i*(g.width+100)), 225);
+  }
 
 };
