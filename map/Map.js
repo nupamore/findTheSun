@@ -53,155 +53,55 @@ var initMap = function(){
       my.renderer(function(){
         ctx.drawImage(tileImage, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
       });
-
-
     });
   };
 
-  for(var i=0; i<10; i++){
-    var g = ground();
-    g.draw(i*(g.width)+250, 500);
-  }
+  // 한번에 여러개를 그리도록 도와주는 함수
+  var drawGroup = function(sprite, count, direction, pos){
+    for(var i=0; i<count; i++){
+      var spr = sprite();
 
-  for(var i=0; i<5; i++){
-    var g = ground();
-    g.draw(i*(g.width), 450);
-  }
+      if(direction=='right')
+        spr.draw(pos.x + (i*spr.width + i*(pos.d||0)), pos.y);
+      else if(direction=='left')
+        spr.draw(pos.x - (i*spr.width + i*(pos.d||0)), pos.y);
+      else if(direction=='down')
+        spr.draw(pos.x, pos.y + (i*spr.height + i*(pos.d||0)));
+      else if(direction=='up')
+        spr.draw(pos.x, pos.y - (i*spr.height + i*(pos.d||0)));
+    }
+  };
 
-  for(var i=0; i<12; i++){
-    var g = ground();
-    g.draw(i*(g.width)+750, 450);
-  }
+  // stage 1
+  drawGroup(ground, 5,  'right', { x: 0,    y: 450 });
+  drawGroup(ground, 10, 'right', { x: 250,  y: 500 });
+  drawGroup(ground, 12, 'right', { x: 750,  y: 450 });
+  drawGroup(ground, 7,  'right', { x: 1350, y: 500 });
+  drawGroup(ground, 6,  'right', { x: 1700, y: 475 });
+  drawGroup(ground, 10, 'right', { x: 2000, y: 425 });
+  drawGroup(ground, 8,  'right', { x: 2500, y: 375 });
+  drawGroup(ground, 8,  'right', { x: 2900, y: 350 });
 
-  for(var i=0; i<7; i++){
-    var g = ground();
-    g.draw(i*(g.width)+1350, 500);
-  }
-
-  for(var i=0; i<6; i++){
-    var g = ground();
-    g.draw(i*(g.width)+1700, 475);
-  }
-
-  for(var i=0; i<10; i++){
-    var g = ground();
-    g.draw(i*(g.width)+2000, 425);
-  }
-
-  for(var i=0; i<8; i++){
-    var g = ground();
-    g.draw(i*(g.width)+2500, 375);
-  }
-
-  for(var i=0; i<8; i++){
-    var g = ground();
-    g.draw(i*(g.width)+2900, 350);
-  }
-
-  //stage 2
-  for(var i=0; i<4; i++){
-    var g = inground();
-    g.draw(3250, i*(g.height)+400);
-  }
-
-  for(var i=0; i<5; i++){
-    var g = ground();
-    g.draw(i*(g.width)+3300, 550);
-  }
-
-  for(var i=0; i<4; i++){
-    var g = ground();
-    g.draw(i*(g.width)+3500, 525);
-  }
-
-  for(var i=0; i<3; i++){
-    var g = branch();
-    g.draw(3650, 470-(i*100));
-  }
-
-  for(var i=0; i<6; i++){
-    var g = inground();
-    g.draw(3700, 525-(i*50));
-  }
-
-  for(var i=0; i<8; i++){
-    var g = ground();
-    g.draw(3700+(i*g.width), 225);
-  }
-
-  for(var i=0; i<6; i++){
-    var g = inground();
-    g.draw(4050, 525-(i*50));
-  }
-
-  for(var i=0; i<3; i++){
-    var g = branch();
-    g.draw(4100, 470-(i*100));
-  }
-
-  for(var i=0; i<8; i++){
-    var g = ground();
-    g.draw(4100+(i*g.width), 525);
-  }
-
-  for(var i=0; i<10; i++){
-    var g = inground();
-    g.draw(4275, 370-(i*50));
-  }
-
-  for(var i=0; i<2; i++){
-    var g = branch();
-    g.draw(4225, 400-(i*100));
-  }
-
-  for(var i=0; i<2; i++){
-    var g = branch();
-    g.draw(4325, 400-(i*100));
-  }
-
-  for(var i=0; i<6; i++){
-    var g = inground();
-    g.draw(4500, 525-(i*50));
-  }
-
-  for(var i=0; i<3; i++){
-    var g = branch();
-    g.draw(4450, 470-(i*100));
-  }
-
-  for(var i=0; i<8; i++){
-    var g = ground();
-    g.draw(4500+(i*g.width), 225);
-  }
-
-  for(var i=0; i<6; i++){
-    var g = inground();
-    g.draw(4800, 525-(i*50));
-  }
-
-  for(var i=0; i<5; i++){
-    var g = ground();
-    g.draw(4850+(i*g.width), 525);
-  }
-
-  for(var i=0; i<5; i++){
-    var g = ground();
-    g.draw(5100+(i*g.width), 475);
-  }
-
-  for(var i=0; i<5; i++){
-    var g = ground();
-    g.draw(5350+(i*g.width), 425);
-  }
-
-  for(var i=0; i<5; i++){
-    var g = ground();
-    g.draw(5600+(i*g.width), 375);
-  }
-
-  for(var i=0; i<5; i++){
-    var g = ground();
-    g.draw(5000+(i*(g.width+100)), 225);
-  }
-
+  // stage 2
+  drawGroup(inground,4, 'down',  { x: 3250, y: 400 });
+  drawGroup(ground, 5,  'right', { x: 3300, y: 550 });
+  drawGroup(ground, 4,  'right', { x: 3500, y: 525 });
+  drawGroup(branch, 3,  'up',    { x: 3650, y: 470, d: 80 });
+  drawGroup(inground,6, 'up',    { x: 3700, y: 525 });
+  drawGroup(ground, 8,  'right', { x: 3700, y: 225 });
+  drawGroup(inground,6, 'up',    { x: 4050, y: 525 });
+  drawGroup(branch, 3,  'up',    { x: 4100, y: 470, d: 80 });
+  drawGroup(ground, 8,  'right', { x: 4100, y: 525 });
+  drawGroup(inground,10,'up',    { x: 4275, y: 370 });
+  drawGroup(branch, 2,  'up',    { x: 4225, y: 400, d: 80 });
+  drawGroup(branch, 2,  'up',    { x: 4325, y: 400, d: 80 });
+  drawGroup(inground,6, 'up',    { x: 4500, y: 525 });
+  drawGroup(branch, 3,  'up',    { x: 4450, y: 470, d: 80 });
+  drawGroup(ground, 8,  'right', { x: 4500, y: 225 });
+  drawGroup(inground,6, 'up',    { x: 4800, y: 525 });
+  drawGroup(ground, 5,  'right', { x: 4850, y: 525 });
+  drawGroup(ground, 5,  'right', { x: 5100, y: 475 });
+  drawGroup(ground, 5,  'right', { x: 5350, y: 425 });
+  drawGroup(ground, 5,  'right', { x: 5600, y: 375 });
+  drawGroup(ground, 5,  'right', { x: 5000, y: 225, d: 100 });
 };
