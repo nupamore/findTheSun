@@ -18,7 +18,7 @@ var Bat = function(x, y, speed){
       }
     });
 
-    setInterval(function(){
+    my.setInterval(function(){
       if(directSW == false){
         directSW = true;
       }else if(directSW == true){
