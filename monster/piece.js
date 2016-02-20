@@ -15,7 +15,7 @@ var Piece = function(x, y){
       }
     });
 
-    setInterval(function(){
+    my.setInterval(function(){
       if(directSW == false){
         directSW = true;
       }else if(directSW == true){
