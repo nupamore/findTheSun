@@ -11,6 +11,7 @@
 <script src="monster/Weed.js"></script>
 <script src="monster/Bat.js"></script>
 <script src="monster/Mouse.js"></script>
+<script src="monster/Piece.js"></script>
 <script src="map/Map.js"></script>
 
 <script>
@@ -28,6 +29,7 @@ var gameStart = function(){
     my.gravity = true;
     my.tag = 'player';
     my.moveSpeed = 50;
+    my.havepiece = 0;
 
     my.animate('img/pikachu.png', 18, 18, {
       left: 0,
@@ -90,6 +92,10 @@ var gameStart = function(){
   new Mouse(300,400,17,30,30);
 */
 
+  new Piece(300, 500);
+  new Piece(500, 500);
+  new Piece(700, 500);
+  new Piece(900, 400);
 
   Camera.target = player;
   if(sprites[player.id]){

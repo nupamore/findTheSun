@@ -1,16 +1,124 @@
 
 var initMap = function(){
   // background
-  new Sprite(function(my){
+  var back1 = new Sprite(function(my){
     my.width = 800;
     my.height = 600;
     my.collision = false;
     my.tag = 'background';
+    my.alp = 1;
 
     my.renderer(function(){
       my.ani.img = new Image();
       my.ani.img.src = 'img/background.png';
+      ctx.save();
+      ctx.globalAlpha = my.alp;
       ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.restore();
+    });
+
+    my.draw(0, 0);
+  });
+
+  var back2 = new Sprite(function(my){
+    my.width = 800;
+    my.height = 600;
+    my.collision = false;
+    my.tag = 'background';
+    my.alp = 0;
+
+    my.renderer(function(){
+      my.ani.img = new Image();
+      my.ani.img.src = 'img/background2.png';
+      ctx.save();
+      if(my.alp < 1.03 && player.havepiece == 1){
+        back1.alp -= 0.0001;
+        my.alp += 0.01;
+        if(back1.alp == 0.3){
+          back1.dead();
+        }
+      }
+      ctx.globalAlpha = my.alp;
+      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.restore();
+    });
+
+    my.draw(0, 0);
+  });
+
+  var back3 = new Sprite(function(my){
+    my.width = 800;
+    my.height = 600;
+    my.collision = false;
+    my.tag = 'background';
+    my.alp = 0;
+
+    my.renderer(function(){
+      my.ani.img = new Image();
+      my.ani.img.src = 'img/background3.png';
+      ctx.save();
+      if(my.alp < 1.03 && player.havepiece == 2){
+        back2.alp -= 0.0001;
+        my.alp += 0.01;
+        if(back2.alp == 0.3){
+          back2.dead();
+        }
+      }
+      ctx.globalAlpha = my.alp;
+      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.restore();
+    });
+
+    my.draw(0, 0);
+  });
+
+  var back4 = new Sprite(function(my){
+    my.width = 800;
+    my.height = 600;
+    my.collision = false;
+    my.tag = 'background';
+    my.alp = 0;
+
+    my.renderer(function(){
+      my.ani.img = new Image();
+      my.ani.img.src = 'img/background4.png';
+      ctx.save();
+      if(my.alp < 1.03 && player.havepiece == 3){
+        back3.alp -= 0.0001;
+        my.alp += 0.01;
+        if(back3.alp == 0.3){
+          back3.dead();
+        }
+      }
+      ctx.globalAlpha = my.alp;
+      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.restore();
+    });
+
+    my.draw(0, 0);
+  });
+
+  var back5 = new Sprite(function(my){
+    my.width = 800;
+    my.height = 600;
+    my.collision = false;
+    my.tag = 'background';
+    my.alp = 0;
+
+    my.renderer(function(){
+      my.ani.img = new Image();
+      my.ani.img.src = 'img/background5.png';
+      ctx.save();
+      if(my.alp < 1.03 && player.havepiece == 4){
+        back5.alp -= 0.0001;
+        my.alp += 0.01;
+        if(back5.alp == 0.3){
+          back5.dead();
+        }
+      }
+      ctx.globalAlpha = my.alp;
+      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.restore();
     });
 
     my.draw(0, 0);
