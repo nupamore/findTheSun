@@ -10,7 +10,7 @@ var initMap = function(){
 
     my.renderer(function(){
       my.ani.img = new Image();
-      my.ani.img.src = 'img/background.png';
+      my.ani.img.src = 'img/background1.png';
       ctx.save();
       ctx.globalAlpha = my.alp;
       ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
@@ -164,6 +164,18 @@ var initMap = function(){
     });
   };
 
+  var Sground = function(){
+    return new Sprite(function(my){
+      my.width = 50;
+      my.height = 50;
+      my.static = true;
+
+      my.renderer(function(){
+        ctx.drawImage(tileImage, 0, 196*2, 196, 196, my.x, my.y, my.width, my.height);
+      });
+    });
+  };
+
   // 한번에 여러개를 그리도록 도와주는 함수
   var drawGroup = function(sprite, count, direction, pos){
     for(var i=0; i<count; i++){
@@ -210,6 +222,10 @@ var initMap = function(){
   drawGroup(ground, 5,  'right', { x: 4850, y: 525 });
   drawGroup(ground, 5,  'right', { x: 5100, y: 475 });
   drawGroup(ground, 5,  'right', { x: 5350, y: 425 });
-  drawGroup(ground, 5,  'right', { x: 5600, y: 375 });
-  drawGroup(ground, 5,  'right', { x: 5000, y: 225, d: 100 });
+  drawGroup(ground, 6,  'right', { x: 5600, y: 375 });
+  drawGroup(ground, 6,  'right', { x: 5000, y: 225, d: 100 });
+  drawGroup(inground, 4,  'up', { x: 5900, y: 375 });
+  drawGroup(branch, 2,  'up',    { x: 5850, y: 310, d: 65 });
+  drawGroup(Sground, 5,  'right',    { x: 5950, y: 225 });
+
 };
