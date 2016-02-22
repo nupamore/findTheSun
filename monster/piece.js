@@ -25,7 +25,7 @@ var Piece = function(x, y){
 
     my.renderer(function(){
       my.img = new Image();
-      my.img.src = 'img/ball.png';
+      my.img.src = 'img/star.png';
       ctx.drawImage(my.img, my.x, my.y, my.width, my.height);
     });
 

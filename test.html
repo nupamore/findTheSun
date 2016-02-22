@@ -48,11 +48,6 @@ var viewRank = function(){
 <script>
 
 var player;
-
-setInterval(function(){
-  Camera.set();
-}, 10);
-
 var gameStart = function(){
 
   for(var i in sprites){
@@ -62,22 +57,22 @@ var gameStart = function(){
 
   player = new Sprite(function(my){
 
-    my.width = 32;
-    my.height = 32;
+    my.width = 34;
+    my.height = 50;
 
     my.gravity = true;
     my.tag = 'player';
     my.moveSpeed = 20;
     my.havepiece = 0;
 
-    my.animate('img/pikachu.png', 18, 18, {
-      left: 0,
-      leftRun: 1,
-      leftJump: 0,
+    my.animate('img/uzuki.png', 133, 191, {
+      left: 2,
+      leftRun: 3,
+      leftJump: 3,
       right: 0,
-      rightRun: 2,
-      rightJump: 0
-    }, 4);
+      rightRun: 1,
+      rightJump: 1
+    }, 8);
 
     my.onDead(function(){
       setTimeout(gameStart, 100);
@@ -125,7 +120,7 @@ var gameStart = function(){
 
 
   new Weed(600,300);
-  new Weed(900,300);
+  //new Weed(900,300);
   new Weed(1200,300);
   new Bat(800,400);
 
@@ -143,8 +138,41 @@ var gameStart = function(){
   Camera.target = player;
 };
 
-if(confirm( 'play game?' ))
-  gameStart();
+
+
+
+
+var back1 = new Sprite(function(my){
+  my.width = 800;
+  my.height = 600;
+  my.collision = false;
+  my.tag = 'background';
+  my.alp = 1;
+
+  my.renderer(function(){
+    my.ani.img = new Image();
+    my.ani.img.src = 'img/background1.png';
+    ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+
+    my.ani.img2 = new Image();
+    my.ani.img2.src = 'img/intro.png';
+    ctx.drawImage(my.ani.img2, my.x, my.y, my.width, my.height);
+  });
+
+  my.draw(0, 0);
+});
+document.body.onclick = (function(){
+  var click = false;
+  return function(){
+    if( click ) return;
+
+    click = true;
+    gameStart();
+    setInterval(function(){
+      Camera.set();
+    }, 10);
+  }
+})();
 
 </script>
 </html>

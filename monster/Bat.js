@@ -2,8 +2,8 @@
 var Bat = function(x, y, speed){
   var bat = new Sprite(function(my){
 
-    my.width = 32;
-    my.height = 32;
+    my.width = 50;
+    my.height = 33;
     my.moveSpeed = speed || 10;
     my.tag = 'monster';
 
@@ -26,14 +26,14 @@ var Bat = function(x, y, speed){
       }
     }, 1000);
 
-    my.animate('img/pikachu.png', 18, 18, {
+    my.animate('img/mio.png', 220, 167, {
       left: 0,
-      leftRun: 1,
+      leftRun: 0,
       leftJump: 0,
-      right: 0,
-      rightRun: 2,
-      rightJump: 0
-    }, 4);
+      right: 1,
+      rightRun: 1,
+      rightJump: 1
+    }, 5);
 
     my.remove('crashes');
 
