@@ -48,9 +48,16 @@ var viewRank = function(){
 <script>
 
 var player;
-var b;
+
+setInterval(function(){
+  Camera.set();
+}, 10);
+
 var gameStart = function(){
 
+  for(var i in sprites){
+    sprites[i].dead();
+  }
   initMap();
 
   player = new Sprite(function(my){
@@ -71,6 +78,10 @@ var gameStart = function(){
       rightRun: 2,
       rightJump: 0
     }, 4);
+
+    my.onDead(function(){
+      setTimeout(gameStart, 100);
+    });
 
     my.remove('crashes');
     my.onCrash(function(direction, target){
@@ -112,7 +123,7 @@ var gameStart = function(){
 
   }).draw(100,200);
 
-/*
+
   new Weed(600,300);
   new Weed(900,300);
   new Weed(1200,300);
@@ -122,8 +133,7 @@ var gameStart = function(){
   new Mouse(700,400,15);
   new Mouse(300,400);
   new Mouse(300,400,17,30,30);
-*/
-  b = new Beetle(4450, 400);
+  new Beetle(4450, 400);
 
   new Piece(1300, 450);
   new Piece(3150, 300);
@@ -131,11 +141,6 @@ var gameStart = function(){
   new Piece(5600, 200);
 
   Camera.target = player;
-  if(sprites[player.id]){
-    setInterval(function(){
-      Camera.set();
-    }, 10);
-  }
 };
 
 if(confirm( 'play game?' ))
