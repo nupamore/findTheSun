@@ -2,31 +2,21 @@
 var Bat = function(x, y, speed){
   var bat = new Sprite(function(my){
 
-    my.width = 44;
-    my.height = 32;
+    my.width = 50;
+    my.height = 33;
     my.moveSpeed = speed || 10;
     my.tag = 'monster';
-    my.jump = false;
 
     my.gravity = false;
     var directSW = false;
 
-    my.animate('img/mio.png', 220, 167, {
-      left: 0,
-      leftRun: 0,
-      leftJump: 0,
-      right: 0,
-      rightRun: 1,
-      rightJump: 0
-    }, 4);
-
-    my.setInterval(function(){
+    my.update(function(){
       if(directSW == false){
         my.state = 'rightwalk';
       }else if(directSW == true){
         my.state = 'leftwalk';
       }
-    }, 100);
+    });
 
     my.setInterval(function(){
       if(directSW == false){
@@ -35,6 +25,15 @@ var Bat = function(x, y, speed){
         directSW = false;
       }
     }, 1000);
+
+    my.animate('img/mio.png', 220, 167, {
+      left: 0,
+      leftRun: 0,
+      leftJump: 0,
+      right: 1,
+      rightRun: 1,
+      rightJump: 1
+    }, 5);
 
     my.remove('crashes');
 
@@ -70,5 +69,5 @@ var Bat = function(x, y, speed){
 
   }).draw(x, y);
 
-  return bat;
+  return Bat;
 };

@@ -48,13 +48,7 @@ var viewRank = function(){
 <script>
 
 var player;
-var level;
-setInterval(function(){
-  Camera.set();
-}, 10);
-
-var gameStart = function(lv){
-  level = lv || 1;
+var gameStart = function(){
 
   for(var i in sprites){
     sprites[i].dead();
@@ -63,8 +57,8 @@ var gameStart = function(lv){
 
   player = new Sprite(function(my){
 
-    my.width = 32;
-    my.height = 40;
+    my.width = 34;
+    my.height = 50;
 
     my.gravity = true;
     my.tag = 'player';
@@ -74,10 +68,10 @@ var gameStart = function(lv){
     my.animate('img/uzuki.png', 133, 191, {
       left: 2,
       leftRun: 3,
-      leftJump: 4,
+      leftJump: 3,
       right: 0,
       rightRun: 1,
-      rightJump: 4
+      rightJump: 1
     }, 8);
 
     my.onDead(function(){
@@ -124,18 +118,18 @@ var gameStart = function(lv){
 
   }).draw(100,200);
 
-/*
+
   new Weed(600,300);
-  new Weed(900,300);
-  new Weed(1200,300);*/
+  //new Weed(900,300);
+  new Weed(1200,300);
   new Bat(800,400);
-/*
+
   new Mouse(500,400,20);
   new Mouse(700,400,15);
   new Mouse(300,400);
   new Mouse(300,400,17,30,30);
   new Beetle(4450, 400);
-*/
+
   new Piece(1300, 450);
   new Piece(3150, 300);
   new Piece(4100, 200);
@@ -144,8 +138,41 @@ var gameStart = function(lv){
   Camera.target = player;
 };
 
-if(confirm( 'play game?' ))
-  gameStart();
+
+
+
+
+var back1 = new Sprite(function(my){
+  my.width = 800;
+  my.height = 600;
+  my.collision = false;
+  my.tag = 'background';
+  my.alp = 1;
+
+  my.renderer(function(){
+    my.ani.img = new Image();
+    my.ani.img.src = 'img/background1.png';
+    ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+
+    my.ani.img2 = new Image();
+    my.ani.img2.src = 'img/intro.png';
+    ctx.drawImage(my.ani.img2, my.x, my.y, my.width, my.height);
+  });
+
+  my.draw(0, 0);
+});
+document.body.onclick = (function(){
+  var click = false;
+  return function(){
+    if( click ) return;
+
+    click = true;
+    gameStart();
+    setInterval(function(){
+      Camera.set();
+    }, 10);
+  }
+})();
 
 </script>
 </html>

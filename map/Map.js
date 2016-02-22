@@ -226,8 +226,6 @@ var initMap = function(){
   drawGroup(ground, 6,  'right', { x: 5000, y: 225, d: 100 });
   drawGroup(inground, 4,'up',    { x: 5900, y: 375 });
   drawGroup(branch, 2,  'up',    { x: 5850, y: 310, d: 65 });
-
-  // stage 3
   drawGroup(Sground, 5, 'right', { x: 5950, y: 225 });
 
 };
