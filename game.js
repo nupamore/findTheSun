@@ -14,14 +14,14 @@ var gameStart = function(lv){
   player = new Sprite(function(my){
 
     my.width = 30;
-    my.height = 55;
+    my.height = 60;
 
     my.gravity = true;
     my.tag = 'player';
     my.moveSpeed = 20;
     my.havepiece = 0;
 
-    my.animate('img/uzuki.png', 133, 191, {
+    my.animate(resource.player, 133, 191, {
       left: 2,
       leftRun: 3,
       leftJump: 2,
@@ -103,13 +103,8 @@ var intro = new Sprite(function(my){
   my.alp = 1;
 
   my.renderer(function(){
-    my.ani.img = new Image();
-    my.ani.img.src = 'img/background1.png';
-    ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
-
-    my.ani.img2 = new Image();
-    my.ani.img2.src = 'img/intro.png';
-    ctx.drawImage(my.ani.img2, my.x, my.y, my.width, my.height);
+    ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
+    ctx.drawImage(resource.intro, my.x, my.y, my.width, my.height);
   });
 
   my.draw(0, 0);

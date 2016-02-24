@@ -1,3 +1,5 @@
+var WeedImage = new Image();
+WeedImage.src = 'img/pikachu.png';
 
 var Weed = function(x, y){
   var weed = new Sprite(function(my){
@@ -8,7 +10,7 @@ var Weed = function(x, y){
 
     my.gravity = true;
 
-    my.animate('img/pikachu.png', 18, 18, {
+    my.animate(resource.weed, 18, 18, {
       left: 0,
       leftRun: 1,
       leftJump: 0,
@@ -92,9 +94,7 @@ var Weed = function(x, y){
 
 
         my.renderer(function(){
-          my.img = new Image();
-          my.img.src = 'img/ball.png';
-          ctx.drawImage(my.img, my.x, my.y, my.width, my.height);
+          ctx.drawImage(resource.ball, my.x, my.y, my.width, my.height);
         });
 
         my.remove('crashes');

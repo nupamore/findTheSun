@@ -9,11 +9,9 @@ var initMap = function(){
     my.alp = 1;
 
     my.renderer(function(){
-      my.ani.img = new Image();
-      my.ani.img.src = 'img/background1.png';
       ctx.save();
       ctx.globalAlpha = my.alp;
-      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
 
@@ -28,8 +26,6 @@ var initMap = function(){
     my.alp = 0;
 
     my.renderer(function(){
-      my.ani.img = new Image();
-      my.ani.img.src = 'img/background2.png';
       ctx.save();
       if(my.alp < 1.03 && player.havepiece == 1){
         back1.alp -= 0.0001;
@@ -39,7 +35,7 @@ var initMap = function(){
         }
       }
       ctx.globalAlpha = my.alp;
-      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.drawImage(resource.bg2, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
 
@@ -54,8 +50,6 @@ var initMap = function(){
     my.alp = 0;
 
     my.renderer(function(){
-      my.ani.img = new Image();
-      my.ani.img.src = 'img/background3.png';
       ctx.save();
       if(my.alp < 1.03 && player.havepiece == 2){
         back2.alp -= 0.0001;
@@ -65,7 +59,7 @@ var initMap = function(){
         }
       }
       ctx.globalAlpha = my.alp;
-      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.drawImage(resource.bg3, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
 
@@ -80,8 +74,6 @@ var initMap = function(){
     my.alp = 0;
 
     my.renderer(function(){
-      my.ani.img = new Image();
-      my.ani.img.src = 'img/background4.png';
       ctx.save();
       if(my.alp < 1.03 && player.havepiece == 3){
         back3.alp -= 0.0001;
@@ -91,7 +83,7 @@ var initMap = function(){
         }
       }
       ctx.globalAlpha = my.alp;
-      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.drawImage(resource.bg4, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
 
@@ -106,8 +98,6 @@ var initMap = function(){
     my.alp = 0;
 
     my.renderer(function(){
-      my.ani.img = new Image();
-      my.ani.img.src = 'img/background5.png';
       ctx.save();
       if(my.alp < 1.03 && player.havepiece == 4){
         back5.alp -= 0.0001;
@@ -117,15 +107,13 @@ var initMap = function(){
         }
       }
       ctx.globalAlpha = my.alp;
-      ctx.drawImage(my.ani.img, my.x, my.y, my.width, my.height);
+      ctx.drawImage(resource.bg5, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
 
     my.draw(0, 0);
   });
 
-  var tileImage = new Image();
-  tileImage.src = 'img/tile.png';
   // ground
   var ground = function(){
     return new Sprite(function(my){
@@ -134,7 +122,7 @@ var initMap = function(){
       my.static = true;
 
       my.renderer(function(){
-        ctx.drawImage(tileImage, 196*1, 196*2, 196, 196, my.x, my.y, my.width, my.height);
+        ctx.drawImage(resource.tile, 196*1, 196*2, 196, 196, my.x, my.y, my.width, my.height);
       });
     });
   };
@@ -146,7 +134,7 @@ var initMap = function(){
       my.static = true;
 
       my.renderer(function(){
-        ctx.drawImage(tileImage, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+        ctx.drawImage(resource.tile, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
       });
     });
   };
@@ -159,7 +147,7 @@ var initMap = function(){
       my.static = true;
 
       my.renderer(function(){
-        ctx.drawImage(tileImage, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+        ctx.drawImage(resource.tile, 196*1, 196*3, 196, 196, my.x, my.y, my.width, my.height);
       });
     });
   };
@@ -171,7 +159,7 @@ var initMap = function(){
       my.static = true;
 
       my.renderer(function(){
-        ctx.drawImage(tileImage, 0, 196*2, 196, 196, my.x, my.y, my.width, my.height);
+        ctx.drawImage(resource.tile, 0, 196*2, 196, 196, my.x, my.y, my.width, my.height);
       });
     });
   };
@@ -188,7 +176,7 @@ var initMap = function(){
       my.gravity = false;
       var directSW = false;
 
-      my.animate('img/mio.png', 220, 167, {
+      my.animate(resource.bat, 220, 167, {
         left: 0,
         leftRun: 0,
         leftJump: 0,
