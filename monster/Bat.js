@@ -18,7 +18,7 @@ var Bat = function(x, y, speed){
       right: 0,
       rightRun: 1,
       rightJump: 0
-    }, 4);
+    }, 5);
 
     my.setInterval(function(){
       if(directSW == false){

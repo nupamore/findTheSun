@@ -176,6 +176,78 @@ var initMap = function(){
     });
   };
 
+  var Moveground = function(){
+    return new Sprite(function(my){
+      my.width = 100;
+      my.height = 80;
+      my.moveSpeed = 10;
+      my.state = 'left';
+      my.jump = false;
+
+      my.static = true;
+      my.gravity = false;
+      var directSW = false;
+
+      my.animate('img/mio.png', 220, 167, {
+        left: 0,
+        leftRun: 0,
+        leftJump: 0,
+        right: 0,
+        rightRun: 1,
+        rightJump: 0
+      }, 5);
+
+      my.setInterval(function(){
+        if(directSW == false){
+          directSW = true;
+        }else if(directSW == true){
+          directSW = false;
+        }
+      }, 1000);
+
+      my.setInterval(function(){
+        if(directSW == false){
+          my.state = 'rightwalk';
+        }else if(directSW == true){
+          my.state = 'leftwalk';
+        }
+      }, 100);
+
+      my.remove('crashes');
+
+      my.onCrash(function(direction, target){
+
+        if(target.tag == 'player'){
+          if(direction == 'top'){
+            if(my.state == 'leftwalk'){
+              target.x += (-0.2*my.moveSpeed);
+            }else{
+              target.x += (0.2*my.moveSpeed);
+            }
+          }
+        }
+
+
+        if(target.tag=='ball') return;
+
+        switch(direction){
+          case 'bottom':
+            my.y = target.y - my.height;
+            my.ay = 0;
+            my.jump = false;
+          break;
+          case 'top':
+            my.y = target.y + target.height;
+            my.ay = 0;
+          break;
+          case 'right': my.x = target.x - my.width; break;
+          case 'left': my.x = target.x + target.width; break;
+        }
+      });
+
+    });
+  };
+
   // 한번에 여러개를 그리도록 도와주는 함수
   var drawGroup = function(sprite, count, direction, pos){
     for(var i=0; i<count; i++){
@@ -229,5 +301,6 @@ var initMap = function(){
 
   // stage 3
   drawGroup(Sground, 5, 'right', { x: 5950, y: 225 });
+  drawGroup(Moveground, 2, 'right', { x: 6250, y: 225, d: 100});
 
 };
