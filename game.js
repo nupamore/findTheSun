@@ -1,51 +1,4 @@
-<html>
-  <head>
 
-  </head>
-<body>
-
-<canvas id="canvas" width=800 height=600></canvas>
-
-</body>
-<!-- server -->
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script>
-
-var insertRank = function(player, score){
-  $.ajax({
-    dataType: 'jsonp',
-    data: 'rank={"player":"'+player+'", "score":"'+score+'"}',
-    jsonp: 'callback',
-    url: 'http://nupa.fun25.co.kr:17903/insert?callback=?',
-    success: function(data) {
-      console.log(data);
-    }
-  });
-};
-
-var viewRank = function(){
-  $.ajax({
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    url: 'http://nupa.fun25.co.kr:17903/view',
-    success: function(data) {
-      console.log(data);
-    }
-  });
-};
-
-</script>
-
-<!-- game -->
-<script src="lib/engine.js"></script>
-<script src="monster/Weed.js"></script>
-<script src="monster/Bat.js"></script>
-<script src="monster/Mouse.js"></script>
-<script src="monster/Beetle.js"></script>
-<script src="monster/Piece.js"></script>
-<script src="map/Map.js"></script>
-
-<script>
 
 var player;
 var level;
@@ -60,8 +13,8 @@ var gameStart = function(lv){
 
   player = new Sprite(function(my){
 
-    my.width = 40;
-    my.height = 50;
+    my.width = 30;
+    my.height = 55;
 
     my.gravity = true;
     my.tag = 'player';
@@ -75,7 +28,7 @@ var gameStart = function(lv){
       right: 0,
       rightRun: 1,
       rightJump: 0
-    }, 8);
+    }, 8, [5,15,0,15]);
 
     my.onDead(function(){
       setTimeout(gameStart, 100);
@@ -168,11 +121,5 @@ document.body.onclick = (function(){
 
     click = true;
     gameStart();
-    setInterval(function(){
-      Camera.set();
-    }, 10);
   }
 })();
-
-</script>
-</html>

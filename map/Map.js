@@ -179,7 +179,7 @@ var initMap = function(){
   var Moveground = function(){
     return new Sprite(function(my){
       my.width = 100;
-      my.height = 80;
+      my.height = 40;
       my.moveSpeed = 10;
       my.state = 'left';
       my.jump = false;
@@ -195,7 +195,7 @@ var initMap = function(){
         right: 0,
         rightRun: 1,
         rightJump: 0
-      }, 5);
+      }, 5, [40,5,5,5]);
 
       my.setInterval(function(){
         if(directSW == false){
@@ -302,5 +302,6 @@ var initMap = function(){
   // stage 3
   drawGroup(Sground, 5, 'right', { x: 5950, y: 225 });
   drawGroup(Moveground, 2, 'right', { x: 6250, y: 225, d: 100});
+  drawGroup(Moveground, 2, 'right', { x: 0, y: 400, d: 100});
 
 };
