@@ -67,7 +67,7 @@ var Weed = function(x, y){
         my.tag = 'ball';
 
         var xup = weed.x - player.x;
-        var yup = weed.y - player.y;
+        var yup = weed.y - (player.y+(player.height/2));
 
         // 애니메이션 변환
         var before = weed.state;

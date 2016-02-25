@@ -236,6 +236,23 @@ var initMap = function(){
     });
   };
 
+  var Water = function(){
+    return new Sprite(function(my){
+      my.width = 50;
+      my.height = 50;
+      my.tag = 'water';
+      my.static = true;
+
+      my.renderer(function(){
+        ctx.drawImage(resource.tile, 196*2, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+      });
+
+      my.remove('crashes');
+
+    });
+  };
+
+
   // 한번에 여러개를 그리도록 도와주는 함수
   var drawGroup = function(sprite, count, direction, pos){
     for(var i=0; i<count; i++){
@@ -289,9 +306,39 @@ var initMap = function(){
 
   // stage 3
   drawGroup(Sground, 5, 'right', { x: 5950, y: 225 });
-
+  drawGroup(Moveground, 2, 'right', { x: 6250, y: 225, d: 100});
+  drawGroup(Moveground, 2, 'right', { x: 6380, y: 450, d: 100});
+  // 윗길
+  drawGroup(Sground, 4, 'right', { x: 6700, y: 225 });
+  drawGroup(Sground, 4, 'right', { x: 6900, y: 250 });
+  drawGroup(Sground, 5, 'right', { x: 7100, y: 200 });
+  drawGroup(Sground, 7, 'right', { x: 7350, y: 225 });
+  drawGroup(Sground, 11, 'up', { x: 7700, y: 225 });
+  // 아랫길
+  drawGroup(Sground, 10, 'right', { x: 6800, y: 800 });
+  drawGroup(Sground, 4, 'right', { x: 7150, y: 350 });
+  drawGroup(Sground, 8, 'right', { x: 7300, y: 750 });
+  drawGroup(Sground, 7, 'down', { x: 7700, y: 275 });
+  drawGroup(Sground, 7, 'right', { x: 7750, y: 750 });
   // y축 테스트용
-  drawGroup(ground, 20,  'up', { x: 0, y: 450, d: 70 });
-  drawGroup(ground, 20,  'up', { x: 100, y: 400, d: 70 });
-
+  drawGroup(Sground, 5,  'up', { x: 8100, y: 750, d: 110 });
+  drawGroup(branch, 5,  'up', { x: 8200, y: 670, d: 140 });
+  drawGroup(Sground, 3,  'up', { x: 8500, y: 750, d: 110 });
+  drawGroup(Sground, 3,  'up', { x: 8550, y: 750, d: 110 });
+  drawGroup(Sground, 8,  'right', { x: 8300, y: 100 });
+  drawGroup(Sground, 10,  'right', { x: 8700, y: 150 });
+  drawGroup(Water, 10,  'right', { x: 8700, y: 100 });
+  drawGroup(Sground, 10,  'right', { x: 9200, y: 100 });
+  drawGroup(Sground, 12,  'down', { x: 9200, y: 150 });
+  drawGroup(Sground, 15,  'up', { x: 9800, y: 300 });
+  drawGroup(Sground, 8,  'left', { x: 9750, y: 300 });
+  drawGroup(Sground, 14,  'right', { x: 9200, y: 750 });
+  drawGroup(Water, 12,  'right', { x: 9250, y: 700 });
+  drawGroup(Water, 10,  'right', { x: 9250, y: 650 });
+  drawGroup(Water, 10,  'right', { x: 9250, y: 600 });
+  drawGroup(Sground, 4,  'up', { x: 9750, y: 650 });
+  drawGroup(Sground, 6,  'right', { x: 9800, y: 500 });
+  drawGroup(Moveground, 1, 'right', { x: 10150, y: 500});
+  drawGroup(Sground, 2, 'right', { x: 10400, y: 500});
+  drawGroup(Sground, 1, 'up', { x: 9850, y: 700});
 };

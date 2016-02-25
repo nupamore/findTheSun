@@ -36,7 +36,11 @@ var gameStart = function(lv){
 
     my.remove('crashes');
     my.onCrash(function(direction, target){
-
+      if(target.tag == 'water'){
+        my.x -= 0.45;
+        my.jump = false;
+        return;
+      }
       if(target.tag == 'ball'){
         my.dead();
         return;
@@ -59,7 +63,11 @@ var gameStart = function(lv){
           case 'bottom':
             my.y = target.y - my.height;
             my.ay = 0;
-            my.jump = false;
+            if(target.tag == 'star'){
+              my.jump = true;
+            }else{
+              my.jump = false;
+            }
           break;
           case 'top':
             my.y = target.y + target.height;
@@ -74,7 +82,7 @@ var gameStart = function(lv){
 
   }).draw(100,200);
 
-/*
+
   new Weed(600,300);
   new Weed(900,300);
   new Beetle(1000, 400);
@@ -86,11 +94,12 @@ var gameStart = function(lv){
   new Mouse(300,400);
   new Mouse(300,400,17,30,30);
   new Beetle(4450, 400);
-*/
-  new Piece(1300, 450);
-  new Piece(3150, 300);
-  new Piece(4100, 200);
-  new Piece(5600, 200);
+
+  new Piece(1290, 420);
+  new Piece(3250, 330);
+  new Piece(5940, 200);
+  new Piece(8300, 50);
+  new Piece(10450, 450);
 
   Camera.target = player;
 };

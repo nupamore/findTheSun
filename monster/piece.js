@@ -3,7 +3,8 @@ var Piece = function(x, y){
 
     my.width = 32;
     my.height = 32;
-
+    
+    my.tag = 'star';
     my.gravity = false;
     var directSW = false;
 
