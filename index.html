@@ -54,9 +54,10 @@ var intro = new Sprite(function(my){
   my.height = 600;
   my.collision = false;
   my.tag = 'background';
-  my.alp = 1;
 
   my.renderer(function(){
+    ctx.font = "30px Arial";
+    ctx.fillText("Loading...",10,50);
     ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
     ctx.drawImage(resource.intro, my.x, my.y, my.width, my.height);
   });
@@ -69,12 +70,14 @@ document.body.onclick = function(){
   if( click ) return;
 
   click = true;
+  intro.dead();
   gameStart();
 };
 document.body.onkeydown = function(){
   if( click ) return;
 
   click = true;
+  intro.dead();
   gameStart();
 };
 </script>
