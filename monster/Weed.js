@@ -1,25 +1,23 @@
-var WeedImage = new Image();
-WeedImage.src = 'img/pikachu.png';
 
 var Weed = function(x, y){
   var weed = new Sprite(function(my){
 
-    my.width = 32;
-    my.height = 32;
+    my.width = 50;
+    my.height = 80;
     my.tag = 'monster';
 
     my.gravity = true;
 
-    my.animate(resource.weed, 18, 18, {
+    my.animate(resource.weed, 165, 235, {
       left: 0,
       leftRun: 1,
       leftJump: 0,
       right: 0,
       rightRun: 2,
       rightJump: 0,
-      leftbehave: 1,
-      rightbehave: 2
-    }, 4);
+      leftbehave: 3,
+      rightbehave: 1
+    }, 10, [10, 5, 0, 5]);
 
     my.ani.repeat = true;
 
@@ -67,7 +65,7 @@ var Weed = function(x, y){
         my.tag = 'ball';
 
         var xup = weed.x - player.x;
-        var yup = weed.y - (player.y+(player.height/2));
+        var yup = weed.y+(weed.height/2) - (player.y+(player.height/2));
 
         // 애니메이션 변환
         var before = weed.state;
@@ -101,7 +99,7 @@ var Weed = function(x, y){
 
         setTimeout( my.dead, 3000 );
 
-      }).draw(weed.x, weed.y);
+      }).draw(weed.x, weed.y+(weed.height/2));
     }
   }, 2000);
 

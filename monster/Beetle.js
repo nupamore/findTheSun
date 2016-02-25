@@ -1,9 +1,9 @@
 var Beetle = function(x, y){
   var beetle = new Sprite(function(my){
 
-    my.width = 32;
-    my.height = 32;
-    my.moveSpeed = 5;
+    my.width = 20;
+    my.height = 30;
+    my.moveSpeed = 3;
     my.tag = 'monster';
     my.state = 'left';
     my.gravity = true;
@@ -16,25 +16,25 @@ var Beetle = function(x, y){
       if(dx < 400 && dy < 80){
         if(my.x - player.x > 0){
           my.state = 'leftwalk';
-          my.ax -= 0.1;
-          if(my.ax>3 && my.ax<3.2) my.ay = -4;
+          my.ax -= 0.08;
+          if(my.ax>2 && my.ax<2.1) my.ay = -4;
         }
         if(my.x - player.x < 0){
           my.state = 'rightwalk';
-          my.ax += 0.1;
-          if(my.ax>3 && my.ax<3.2) my.ay = -4;
+          my.ax += 0.08;
+          if(my.ax>2 && my.ax<2.2) my.ay = -4;
         }
       }
     }, 10);
 
-    my.animate(resource.beetle, 18, 18, {
-      left: 0,
+    my.animate(resource.beetle, 137, 191, {
+      left: 1,
       leftRun: 1,
-      leftJump: 0,
+      leftJump: 1,
       right: 0,
-      rightRun: 2,
+      rightRun: 0,
       rightJump: 0
-    }, 4);
+    }, 10, [10,5,0,5]);
 
     my.remove('crashes');
 

@@ -88,8 +88,8 @@ var gameStart = function(lv){
 
   }).draw(100,200);
 
-
-/*  new Weed(600,300);
+/*
+  new Weed(600,300);
   new Weed(900,300);
   new Beetle(1000, 400);
   new Weed(1200,300);
@@ -100,12 +100,12 @@ var gameStart = function(lv){
   new Mouse(300,400);
   new Mouse(300,400,17,30,30);
   new Beetle(4450, 400);
-
+*/
   new Piece(1290, 420);
   new Piece(3250, 330);
   new Piece(5940, 200);
   new Piece(8300, 50);
   new Piece(10450, 450);
-*/
+
   Camera.target = player;
 };

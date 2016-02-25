@@ -27,7 +27,7 @@ resource.player = new Image();
 resource.player.src = 'img/uzuki.png';
 
 resource.weed = new Image();
-resource.weed.src = 'img/pikachu.png';
+resource.weed.src = 'img/yuko.png';
 
 resource.ball = new Image();
 resource.ball.src = 'img/ball.png';
@@ -39,7 +39,7 @@ resource.mouse = new Image();
 resource.mouse.src = 'img/pikachu.png';
 
 resource.beetle = new Image();
-resource.beetle.src = 'img/pikachu.png';
+resource.beetle.src = 'img/miria.png';
 
 resource.piece = new Image();
 resource.piece.src = 'img/star.png';
