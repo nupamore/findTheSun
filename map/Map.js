@@ -240,31 +240,22 @@ var initMap = function(){
     return new Sprite(function(my){
       my.width = 50;
       my.height = 50;
-      my.tag = 'water';
+      my.collision = false;
       my.static = true;
 
       my.renderer(function(){
         ctx.drawImage(resource.tile, 196*2, 196*3, 196, 196, my.x, my.y, my.width, my.height);
       });
-
-      my.remove('crashes');
-
     });
   };
 
-  var WaterLayer = function(){
+  var WaterLayer = function(width, height){
     return new Sprite(function(my){
-      my.width = 600;
-      my.height = 300;
+      my.width = width;
+      my.height = height;
       my.tag = 'water';
       my.static = true;
-
-      my.renderer(function(){
-        ctx.drawImage(resource.tile, 196*2, 196*3, 196, 196, my.x, my.y, my.width, my.height);
-      });
-
       my.remove('crashes');
-
     });
   };
 
@@ -343,16 +334,17 @@ var initMap = function(){
   drawGroup(Sground, 3,  'up', { x: 8550, y: 750, d: 110 });
   drawGroup(Sground, 8,  'right', { x: 8300, y: 100 });
   drawGroup(Sground, 10,  'right', { x: 8700, y: 150 });
+  new WaterLayer(500,50).draw(8700,101);
   drawGroup(Water, 10,  'right', { x: 8700, y: 100 });
   drawGroup(Sground, 10,  'right', { x: 9200, y: 100 });
   drawGroup(Sground, 12,  'down', { x: 9200, y: 150 });
   drawGroup(Sground, 15,  'up', { x: 9800, y: 300 });
   drawGroup(Sground, 8,  'left', { x: 9750, y: 300 });
   drawGroup(Sground, 14,  'right', { x: 9200, y: 750 });
-  new WaterLayer().draw(9250,501);
-  //drawGroup(Water, 12,  'right', { x: 9250, y: 700 });
-  //drawGroup(Water, 10,  'right', { x: 9250, y: 650 });
-  //drawGroup(Water, 10,  'right', { x: 9250, y: 600 });
+  new WaterLayer(600,150).draw(9250,601);
+  drawGroup(Water, 12,  'right', { x: 9250, y: 700 });
+  drawGroup(Water, 10,  'right', { x: 9250, y: 650 });
+  drawGroup(Water, 10,  'right', { x: 9250, y: 600 });
   drawGroup(Sground, 4,  'up', { x: 9750, y: 650 });
   drawGroup(Sground, 6,  'right', { x: 9800, y: 500 });
   drawGroup(Moveground, 1, 'right', { x: 10150, y: 500});
