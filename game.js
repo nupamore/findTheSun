@@ -4,6 +4,11 @@ var player;
 var level;
 
 var gameStart = function(lv){
+
+  // 스프라이트 비우기
+  sprites = {};
+  allSprites = {};
+
   level = lv || 1;
 
   for(var i in sprites){
