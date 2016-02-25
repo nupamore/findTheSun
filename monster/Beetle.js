@@ -27,7 +27,7 @@ var Beetle = function(x, y){
       }
     }, 10);
 
-    my.animate('img/pikachu.png', 18, 18, {
+    my.animate(resource.beetle, 18, 18, {
       left: 0,
       leftRun: 1,
       leftJump: 0,

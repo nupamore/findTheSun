@@ -18,7 +18,7 @@ var Mouse = function(x, y, speed, w, h){
       }
     });
 
-    my.animate('img/pikachu.png', 18, 18, {
+    my.animate(resource.mouse, 18, 18, {
       left: 0,
       leftRun: 1,
       leftJump: 0,

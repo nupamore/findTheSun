@@ -3,7 +3,7 @@ var Piece = function(x, y){
 
     my.width = 32;
     my.height = 32;
-    
+
     my.tag = 'star';
     my.gravity = false;
     var directSW = false;
@@ -25,9 +25,7 @@ var Piece = function(x, y){
     }, 800);
 
     my.renderer(function(){
-      my.img = new Image();
-      my.img.src = 'img/star.png';
-      ctx.drawImage(my.img, my.x, my.y, my.width, my.height);
+      ctx.drawImage(resource.piece, my.x, my.y, my.width, my.height);
     });
 
     my.remove('crashes');

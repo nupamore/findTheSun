@@ -26,8 +26,8 @@ resource.tile.src = 'img/tile.png';
 resource.player = new Image();
 resource.player.src = 'img/uzuki.png';
 
-resource.Weed = new Image();
-resource.Weed.src = 'img/pikachu.png';
+resource.weed = new Image();
+resource.weed.src = 'img/pikachu.png';
 
 resource.ball = new Image();
 resource.ball.src = 'img/ball.png';

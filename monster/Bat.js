@@ -11,7 +11,7 @@ var Bat = function(x, y, speed){
     my.gravity = false;
     var directSW = false;
 
-    my.animate('img/mio.png', 220, 167, {
+    my.animate(resource.bat, 220, 167, {
       left: 0,
       leftRun: 0,
       leftJump: 0,
