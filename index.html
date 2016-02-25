@@ -1,6 +1,33 @@
 <html>
   <head>
+    <!--script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- server -->
+    <script>
 
+    var insertRank = function(player, score){
+      $.ajax({
+        dataType: 'jsonp',
+        data: 'rank={"player":"'+player+'", "score":"'+score+'"}',
+        jsonp: 'callback',
+        url: 'http://nupa.fun25.co.kr:17903/insert?callback=?',
+        success: function(data) {
+          console.log(data);
+        }
+      });
+    };
+
+    var viewRank = function(){
+      $.ajax({
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        url: 'http://nupa.fun25.co.kr:17903/view',
+        success: function(data) {
+          console.log(data);
+        }
+      });
+    };
+
+    </script>
   </head>
 <body>
 <center>
@@ -8,34 +35,7 @@
 </center>
 
 </body>
-<!-- server -->
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script>
 
-var insertRank = function(player, score){
-  $.ajax({
-    dataType: 'jsonp',
-    data: 'rank={"player":"'+player+'", "score":"'+score+'"}',
-    jsonp: 'callback',
-    url: 'http://nupa.fun25.co.kr:17903/insert?callback=?',
-    success: function(data) {
-      console.log(data);
-    }
-  });
-};
-
-var viewRank = function(){
-  $.ajax({
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    url: 'http://nupa.fun25.co.kr:17903/view',
-    success: function(data) {
-      console.log(data);
-    }
-  });
-};
-
-</script>
 
 <!-- game -->
 <script src="resource.js"></script>
@@ -48,5 +48,30 @@ var viewRank = function(){
 <script src="map/Map.js"></script>
 
 <script src="game.js"></script>
+<script>
+var intro = new Sprite(function(my){
+  my.width = 800;
+  my.height = 600;
+  my.collision = false;
+  my.tag = 'background';
+  my.alp = 1;
+
+  my.renderer(function(){
+    ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
+    ctx.drawImage(resource.intro, my.x, my.y, my.width, my.height);
+  });
+
+  my.draw(0, 0);
+});
+document.body.onclick = (function(){
+  var click = false;
+  return function(){
+    if( click ) return;
+
+    click = true;
+    gameStart();
+  }
+})();
+</script>
 
 </html>

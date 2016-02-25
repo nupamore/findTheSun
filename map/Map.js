@@ -289,7 +289,9 @@ var initMap = function(){
 
   // stage 3
   drawGroup(Sground, 5, 'right', { x: 5950, y: 225 });
-  drawGroup(Moveground, 2, 'right', { x: 6250, y: 225, d: 100});
-  drawGroup(Moveground, 2, 'right', { x: 0, y: 400, d: 100});
+
+  // y축 테스트용
+  drawGroup(ground, 20,  'up', { x: 0, y: 450, d: 70 });
+  drawGroup(ground, 20,  'up', { x: 100, y: 400, d: 70 });
 
 };

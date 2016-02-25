@@ -13,7 +13,7 @@ var gameStart = function(lv){
 
   player = new Sprite(function(my){
 
-    my.width = 30;
+    my.width = 20;
     my.height = 60;
 
     my.gravity = true;
@@ -94,27 +94,3 @@ var gameStart = function(lv){
 
   Camera.target = player;
 };
-
-var intro = new Sprite(function(my){
-  my.width = 800;
-  my.height = 600;
-  my.collision = false;
-  my.tag = 'background';
-  my.alp = 1;
-
-  my.renderer(function(){
-    ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
-    ctx.drawImage(resource.intro, my.x, my.y, my.width, my.height);
-  });
-
-  my.draw(0, 0);
-});
-document.body.onclick = (function(){
-  var click = false;
-  return function(){
-    if( click ) return;
-
-    click = true;
-    gameStart();
-  }
-})();
