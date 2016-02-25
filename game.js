@@ -24,10 +24,10 @@ var gameStart = function(lv){
     my.animate(resource.player, 133, 191, {
       left: 2,
       leftRun: 3,
-      leftJump: 2,
+      leftJump: 5,
       right: 0,
       rightRun: 1,
-      rightJump: 0
+      rightJump: 4
     }, 8, [5,15,0,15]);
 
     my.onDead(function(){
@@ -88,7 +88,7 @@ var gameStart = function(lv){
 
   }).draw(100,200);
 
-/*
+
   new Weed(600,300);
   new Weed(900,300);
   new Beetle(1000, 400);
@@ -100,7 +100,7 @@ var gameStart = function(lv){
   new Mouse(300,400);
   new Mouse(300,400,17,30,30);
   new Beetle(4450, 400);
-*/
+
   new Piece(1290, 420);
   new Piece(3250, 330);
   new Piece(5940, 200);

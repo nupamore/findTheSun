@@ -18,6 +18,7 @@ var Mouse = function(x, y, speed, w, h){
       }
     });
 
+    /*
     my.animate(resource.mouse, 18, 18, {
       left: 0,
       leftRun: 1,
@@ -28,6 +29,15 @@ var Mouse = function(x, y, speed, w, h){
       leftbehave: 1,
       rightbehave: 2
     }, 4);
+    */
+    my.animate(resource.beetle, 137, 191, {
+      left: 1,
+      leftRun: 1,
+      leftJump: 1,
+      right: 0,
+      rightRun: 0,
+      rightJump: 0
+    }, 10, [5,0,0,0]);
 
     my.remove('crashes');
 

@@ -63,15 +63,20 @@ var intro = new Sprite(function(my){
 
   my.draw(0, 0);
 });
-document.body.onclick = (function(){
-  var click = false;
-  return function(){
-    if( click ) return;
 
-    click = true;
-    gameStart();
-  }
-})();
+var click = false;
+document.body.onclick = function(){
+  if( click ) return;
+
+  click = true;
+  gameStart();
+};
+document.body.onkeydown = function(){
+  if( click ) return;
+
+  click = true;
+  gameStart();
+};
 </script>
 
 </html>

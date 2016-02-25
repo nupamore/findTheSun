@@ -57,51 +57,54 @@ var Weed = function(x, y){
 
   }).draw(x, y);
 
-  var ballshot = setInterval(function(){
-    if(sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
-      new Sprite(function(my){
-        my.width = 20;
-        my.height = 20;
-        my.tag = 'ball';
+  var ballshot;
+  setTimeout(function(){
+    ballshot = setInterval(function(){
+      if(sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
+        var ball = new Sprite(function(my){
+          my.width = 20;
+          my.height = 20;
+          my.tag = 'ball';
 
-        var xup = weed.x - player.x;
-        var yup = weed.y+(weed.height/2) - (player.y+(player.height/2));
+          var xup = weed.x - player.x;
+          var yup = weed.y+(weed.height/2) - (player.y+(player.height/2));
 
-        // 애니메이션 변환
-        var before = weed.state;
-        if(xup >= 0){
-          weed.state = 'leftbehave';
-        }
-        if(xup < 0){
-          weed.state = 'rightbehave';
-        }
-        weed.ani.repeat = false;
+          // 애니메이션 변환
+          var before = weed.state;
+          if(xup >= 0){
+            weed.state = 'leftbehave';
+          }
+          if(xup < 0){
+            weed.state = 'rightbehave';
+          }
+          weed.ani.repeat = false;
 
-        setTimeout(function(){
-          weed.state = before;
-          weed.ani.repeat = true;
-        }, 600);
-        //
+          setTimeout(function(){
+            weed.state = before;
+            weed.ani.repeat = true;
+          }, 600);
+          //
 
-        var distance = Math.sqrt(Math.pow(xup, 2) + Math.pow(yup, 2));
+          var distance = Math.sqrt(Math.pow(xup, 2) + Math.pow(yup, 2));
 
-        my.ax = -xup/distance;
-        my.ay = -yup/distance;
+          my.ax = -xup/distance;
+          my.ay = -yup/distance;
 
-        my.gravity = false;
+          my.gravity = false;
 
 
-        my.renderer(function(){
-          ctx.drawImage(resource.ball, my.x, my.y, my.width, my.height);
-        });
+          my.renderer(function(){
+            ctx.drawImage(resource.ball, my.x, my.y, my.width, my.height);
+          });
 
-        my.remove('crashes');
+          my.remove('crashes');
 
-        setTimeout( my.dead, 3000 );
+          setTimeout( my.dead, 3000 );
 
-      }).draw(weed.x, weed.y+(weed.height/2));
-    }
-  }, 2000);
+        }).draw(weed.x+(weed.width/4), weed.y+(weed.height/5));
+      }
+    }, 2000);
+  },400);
 
   return weed;
 };
