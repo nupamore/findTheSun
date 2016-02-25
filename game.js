@@ -38,6 +38,12 @@ var gameStart = function(lv){
     my.onCrash(function(direction, target){
       if(target.tag == 'water'){
         my.x -= 0.45;
+        if(my.ay>1){
+          my.ay -= 0.2;
+        }
+        else if(my.ay<-1){
+          my.ay += 0.2;
+        }
         my.jump = false;
         return;
       }
@@ -83,7 +89,7 @@ var gameStart = function(lv){
   }).draw(100,200);
 
 
-  new Weed(600,300);
+/*  new Weed(600,300);
   new Weed(900,300);
   new Beetle(1000, 400);
   new Weed(1200,300);
@@ -100,6 +106,6 @@ var gameStart = function(lv){
   new Piece(5940, 200);
   new Piece(8300, 50);
   new Piece(10450, 450);
-
+*/
   Camera.target = player;
 };

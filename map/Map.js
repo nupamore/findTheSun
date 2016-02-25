@@ -252,6 +252,22 @@ var initMap = function(){
     });
   };
 
+  var WaterLayer = function(){
+    return new Sprite(function(my){
+      my.width = 600;
+      my.height = 300;
+      my.tag = 'water';
+      my.static = true;
+
+      my.renderer(function(){
+        ctx.drawImage(resource.tile, 196*2, 196*3, 196, 196, my.x, my.y, my.width, my.height);
+      });
+
+      my.remove('crashes');
+
+    });
+  };
+
 
   // 한번에 여러개를 그리도록 도와주는 함수
   var drawGroup = function(sprite, count, direction, pos){
@@ -333,9 +349,10 @@ var initMap = function(){
   drawGroup(Sground, 15,  'up', { x: 9800, y: 300 });
   drawGroup(Sground, 8,  'left', { x: 9750, y: 300 });
   drawGroup(Sground, 14,  'right', { x: 9200, y: 750 });
-  drawGroup(Water, 12,  'right', { x: 9250, y: 700 });
-  drawGroup(Water, 10,  'right', { x: 9250, y: 650 });
-  drawGroup(Water, 10,  'right', { x: 9250, y: 600 });
+  new WaterLayer().draw(9250,501);
+  //drawGroup(Water, 12,  'right', { x: 9250, y: 700 });
+  //drawGroup(Water, 10,  'right', { x: 9250, y: 650 });
+  //drawGroup(Water, 10,  'right', { x: 9250, y: 600 });
   drawGroup(Sground, 4,  'up', { x: 9750, y: 650 });
   drawGroup(Sground, 6,  'right', { x: 9800, y: 500 });
   drawGroup(Moveground, 1, 'right', { x: 10150, y: 500});
