@@ -2,6 +2,8 @@
 var Bat = function(x, y, speed){
   var bat = new Sprite(function(my){
 
+    my.x = x;
+    my.y = y;
     my.width = 44;
     my.height = 32;
     my.moveSpeed = speed || 10;
@@ -52,7 +54,7 @@ var Bat = function(x, y, speed){
       if(target.tag=='ball') return;
       if(target.tag=='monster') return;
       if(target.tag=='water') return;
-      
+
       switch(direction){
         case 'bottom':
           my.y = target.y - my.height;
@@ -69,7 +71,7 @@ var Bat = function(x, y, speed){
 
     });
 
-  }).draw(x, y);
+  });
 
   return bat;
 };

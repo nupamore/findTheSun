@@ -1,6 +1,8 @@
 var Piece = function(x, y){
   var piece = new Sprite(function(my){
 
+    my.x = x;
+    my.y = y;
     my.width = 32;
     my.height = 32;
 
@@ -63,7 +65,7 @@ var Piece = function(x, y){
 
     });
 
-  }).draw(x, y);
+  });
 
-  return Piece;
+  return piece;
 };

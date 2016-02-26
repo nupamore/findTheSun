@@ -1,6 +1,8 @@
 var Mouse = function(x, y, speed, w, h){
   var mouse = new Sprite(function(my){
 
+    my.x = x;
+    my.y = y;
     my.width = w || 30;
     my.height = h || 20;
     my.moveSpeed = speed || 10;
@@ -50,7 +52,7 @@ var Mouse = function(x, y, speed, w, h){
           target.dead();
         }
       }
-      
+
       if(target.tag=='water') return;
       if(target.tag == 'ball') return;
       if(target.tag == 'monster') return;
@@ -77,7 +79,7 @@ var Mouse = function(x, y, speed, w, h){
 
     });
 
-  }).draw(x, y);
+  });
 
-  return Mouse;
+  return mouse;
 };

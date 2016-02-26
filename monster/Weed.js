@@ -2,6 +2,8 @@
 var Weed = function(x, y){
   var weed = new Sprite(function(my){
 
+    my.x = x;
+    my.y = y;
     my.width = 40;
     my.height = 60;
     my.tag = 'monster';
@@ -28,7 +30,6 @@ var Weed = function(x, y){
       if(target.tag == 'player'){
         if(direction == 'top'){
           my.dead();
-          clearInterval(ballshot);
         }else {
           target.dead();
         }
@@ -55,57 +56,58 @@ var Weed = function(x, y){
 
     });
 
-  }).draw(x, y);
+    my.start(function(){
+      setTimeout(function(){
+        my.setInterval(function(){
+          var dx = Math.abs(weed.x - player.x);
+          if(dx < 350 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
+            var ball = new Sprite(function(my){
+              my.width = 20;
+              my.height = 20;
+              my.tag = 'ball';
 
-  var ballshot;
-  setTimeout(function(){
-    ballshot = setInterval(function(){
-      var dx = Math.abs(weed.x - player.x);
-      if(dx < 350 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
-        var ball = new Sprite(function(my){
-          my.width = 20;
-          my.height = 20;
-          my.tag = 'ball';
+              var xup = weed.x - player.x;
+              var yup = weed.y+(weed.height/2) - (player.y+(player.height/2));
 
-          var xup = weed.x - player.x;
-          var yup = weed.y+(weed.height/2) - (player.y+(player.height/2));
+              // 애니메이션 변환
+              var before = weed.state;
+              if(xup >= 0){
+                weed.state = 'leftbehave';
+              }
+              if(xup < 0){
+                weed.state = 'rightbehave';
+              }
+              weed.ani.repeat = false;
 
-          // 애니메이션 변환
-          var before = weed.state;
-          if(xup >= 0){
-            weed.state = 'leftbehave';
+              setTimeout(function(){
+                weed.state = before;
+                weed.ani.repeat = true;
+              }, 600);
+              //
+
+              var distance = Math.sqrt(Math.pow(xup, 2) + Math.pow(yup, 2));
+
+              my.ax = -xup/distance;
+              my.ay = -yup/distance;
+
+              my.gravity = false;
+
+
+              my.renderer(function(){
+                ctx.drawImage(resource.ball, my.x, my.y, my.width, my.height);
+              });
+
+              my.remove('crashes');
+
+              setTimeout( my.dead, 3000 );
+
+            }).draw(weed.x+(weed.width/4), weed.y+(weed.height/5));
           }
-          if(xup < 0){
-            weed.state = 'rightbehave';
-          }
-          weed.ani.repeat = false;
+        }, 2000);
+      },400);
+    });
 
-          setTimeout(function(){
-            weed.state = before;
-            weed.ani.repeat = true;
-          }, 600);
-          //
-
-          var distance = Math.sqrt(Math.pow(xup, 2) + Math.pow(yup, 2));
-
-          my.ax = -xup/distance;
-          my.ay = -yup/distance;
-
-          my.gravity = false;
-
-
-          my.renderer(function(){
-            ctx.drawImage(resource.ball, my.x, my.y, my.width, my.height);
-          });
-
-          my.remove('crashes');
-
-          setTimeout( my.dead, 3000 );
-
-        }).draw(weed.x+(weed.width/4), weed.y+(weed.height/5));
-      }
-    }, 2000);
-  },400);
+  });
 
   return weed;
 };

@@ -1,6 +1,8 @@
 var Beetle = function(x, y){
   var beetle = new Sprite(function(my){
 
+    my.x = x;
+    my.y = y;
     my.width = 20;
     my.height = 30;
     my.moveSpeed = 3;
@@ -10,22 +12,26 @@ var Beetle = function(x, y){
 
     var dx, dy;
 
-    var interval = setInterval(function(){
-      var dx = Math.abs(my.x - player.x);
-      var dy = Math.abs(player.y - my.y);
-      if(dx < 400 && dy < 80){
-        if(my.x - player.x > 0){
-          my.state = 'leftwalk';
-          my.ax -= 0.08;
-          if(my.ax>2 && my.ax<2.1) my.ay = -4;
+    var interval;
+
+    my.start(function(){
+      interval = setInterval(function(){
+        var dx = Math.abs(my.x - player.x);
+        var dy = Math.abs(player.y - my.y);
+        if(dx < 400 && dy < 80){
+          if(my.x - player.x > 0){
+            my.state = 'leftwalk';
+            my.ax -= 0.08;
+            if(my.ax>2 && my.ax<2.1) my.ay = -4;
+          }
+          if(my.x - player.x < 0){
+            my.state = 'rightwalk';
+            my.ax += 0.08;
+            if(my.ax>2 && my.ax<2.2) my.ay = -4;
+          }
         }
-        if(my.x - player.x < 0){
-          my.state = 'rightwalk';
-          my.ax += 0.08;
-          if(my.ax>2 && my.ax<2.2) my.ay = -4;
-        }
-      }
-    }, 10);
+      }, 10);
+    });
 
     my.animate(resource.beetle, 137, 191, {
       left: 1,
@@ -72,7 +78,7 @@ var Beetle = function(x, y){
     });
 
 
-  }).draw(x, y);
+  });
 
   return beetle;
 };

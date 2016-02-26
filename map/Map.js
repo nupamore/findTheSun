@@ -1,4 +1,5 @@
 
+var map = [];
 var initMap = function(){
   // background
   var back1 = new Sprite(function(my){
@@ -14,8 +15,6 @@ var initMap = function(){
       ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
-
-    my.draw(0, 0);
   });
 
   var back2 = new Sprite(function(my){
@@ -38,8 +37,6 @@ var initMap = function(){
       ctx.drawImage(resource.bg2, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
-
-    my.draw(0, 0);
   });
 
   var back3 = new Sprite(function(my){
@@ -62,8 +59,6 @@ var initMap = function(){
       ctx.drawImage(resource.bg3, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
-
-    my.draw(0, 0);
   });
 
   var back4 = new Sprite(function(my){
@@ -86,8 +81,6 @@ var initMap = function(){
       ctx.drawImage(resource.bg4, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
-
-    my.draw(0, 0);
   });
 
   var back5 = new Sprite(function(my){
@@ -110,8 +103,6 @@ var initMap = function(){
       ctx.drawImage(resource.bg5, my.x, my.y, my.width, my.height);
       ctx.restore();
     });
-
-    my.draw(0, 0);
   });
 
   // ground
@@ -266,16 +257,23 @@ var initMap = function(){
       var spr = sprite();
 
       if(direction=='right')
-        spr.draw(pos.x + (i*spr.width + i*(pos.d||0)), pos.y);
+        map.push(spr.draw(pos.x + (i*spr.width + i*(pos.d||0)), pos.y));
       else if(direction=='left')
-        spr.draw(pos.x - (i*spr.width + i*(pos.d||0)), pos.y);
+        map.push(spr.draw(pos.x - (i*spr.width + i*(pos.d||0)), pos.y));
       else if(direction=='down')
-        spr.draw(pos.x, pos.y + (i*spr.height + i*(pos.d||0)));
+        map.push(spr.draw(pos.x, pos.y + (i*spr.height + i*(pos.d||0))));
       else if(direction=='up')
-        spr.draw(pos.x, pos.y - (i*spr.height + i*(pos.d||0)));
+        map.push(spr.draw(pos.x, pos.y - (i*spr.height + i*(pos.d||0))));
     }
   };
 
+
+  // background
+  map.push(back1);
+  map.push(back2);
+  map.push(back3);
+  map.push(back4);
+  map.push(back5);
   // stage 1
   drawGroup(ground, 5,  'right', { x: 0,    y: 450 });
   drawGroup(ground, 10, 'right', { x: 250,  y: 500 });
@@ -334,14 +332,14 @@ var initMap = function(){
   drawGroup(Sground, 3,  'up', { x: 8450, y: 750, d: 110 });
   drawGroup(Sground, 8,  'right', { x: 8300, y: 100 });
   drawGroup(Sground, 10,  'right', { x: 8700, y: 150 });
-  new WaterLayer(500,50).draw(8700,101);
+  map.push(new WaterLayer(500,50).draw(8700,101));
   drawGroup(Water, 10,  'right', { x: 8700, y: 100 });
   drawGroup(Sground, 10,  'right', { x: 9200, y: 100 });
   drawGroup(Sground, 12,  'down', { x: 9200, y: 150 });
   drawGroup(Sground, 15,  'up', { x: 9800, y: 300 });
   drawGroup(Sground, 8,  'left', { x: 9750, y: 300 });
   drawGroup(Sground, 14,  'right', { x: 9200, y: 750 });
-  new WaterLayer(600,150).draw(9250,601);
+  map.push(new WaterLayer(600,150).draw(9250,601));
   drawGroup(Water, 12,  'right', { x: 9250, y: 700 });
   drawGroup(Water, 10,  'right', { x: 9250, y: 650 });
   drawGroup(Water, 10,  'right', { x: 9250, y: 600 });
@@ -351,3 +349,9 @@ var initMap = function(){
   drawGroup(Sground, 2, 'right', { x: 10400, y: 500});
   drawGroup(Sground, 1, 'up', { x: 9850, y: 700});
 };
+
+var renderMap = function(){
+  for(var i in map){
+    map[i].draw();
+  }
+}
