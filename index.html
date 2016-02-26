@@ -1,6 +1,6 @@
 <html>
   <head>
-    <!--script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- server -->
     <script>
 
@@ -28,10 +28,41 @@
     };
 
     </script>
+    <style>
+      .container{
+        width: 800px;
+      }
+      #button-container{
+        position: absolute;
+        width: 400px;
+        height: 50px;
+      }
+      .button{
+        margin: 10px;
+        color: #aaa;
+        font-size: 20;
+        transition: 0.3s;
+      }
+      .button:hover {
+      color:#fff;
+      cursor: pointer;
+    }
+    </style>
   </head>
 <body>
+
 <center>
-<canvas id="canvas" width=800 height=600></canvas>
+<div class="container">
+  <canvas id="canvas" width=800 height=600></canvas>
+
+  <div id="button-container" style="top:360px;">
+    <div class="button">Debut</div>
+    <div class="button">Regular</div>
+    <div class="button">Pro</div>
+    <div class="button">Master</div>
+    <div class="button">Master+</div>
+  </div>
+</div>
 </center>
 
 </body>
@@ -65,21 +96,20 @@ var intro = new Sprite(function(my){
   my.draw(0, 0);
 });
 
-var click = false;
-document.body.onclick = function(){
-  if( click ) return;
+$('.button').click(function(){
+  var level = {
+    'Debut': 1,
+    'Regular': 2,
+    'Pro': 3,
+    'Master': 4,
+    'Master5' : 5
+  }[$(this).text()];
 
-  click = true;
-  intro.dead();
-  gameStart();
-};
-document.body.onkeydown = function(){
-  if( click ) return;
+  $('#button-container').hide();
 
-  click = true;
   intro.dead();
-  gameStart();
-};
+  gameStart(level);
+});
 </script>
 
 </html>
