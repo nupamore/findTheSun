@@ -1,7 +1,7 @@
 var Mouse = function(x, y, speed, w, h){
   var mouse = new Sprite(function(my){
 
-    my.width = w || 20;
+    my.width = w || 30;
     my.height = h || 20;
     my.moveSpeed = speed || 10;
     my.tag = 'monster';
@@ -37,7 +37,7 @@ var Mouse = function(x, y, speed, w, h){
       right: 0,
       rightRun: 0,
       rightJump: 0
-    }, 10, [5,0,0,0]);
+    }, 10, [20,0,0,0]);
 
     my.remove('crashes');
 
@@ -50,7 +50,8 @@ var Mouse = function(x, y, speed, w, h){
           target.dead();
         }
       }
-
+      
+      if(target.tag=='water') return;
       if(target.tag == 'ball') return;
       if(target.tag == 'monster') return;
 

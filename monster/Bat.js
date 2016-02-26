@@ -51,7 +51,8 @@ var Bat = function(x, y, speed){
 
       if(target.tag=='ball') return;
       if(target.tag=='monster') return;
-
+      if(target.tag=='water') return;
+      
       switch(direction){
         case 'bottom':
           my.y = target.y - my.height;

@@ -2,8 +2,8 @@
 var Weed = function(x, y){
   var weed = new Sprite(function(my){
 
-    my.width = 50;
-    my.height = 80;
+    my.width = 40;
+    my.height = 60;
     my.tag = 'monster';
 
     my.gravity = true;
@@ -37,7 +37,7 @@ var Weed = function(x, y){
 
       if(target.tag=='ball') return;
       if(target.tag == 'monster') return;
-
+      if(target.tag=='water') return;
 
       switch(direction){
         case 'bottom':
@@ -60,7 +60,8 @@ var Weed = function(x, y){
   var ballshot;
   setTimeout(function(){
     ballshot = setInterval(function(){
-      if(sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
+      var dx = Math.abs(weed.x - player.x);
+      if(dx < 350 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
         var ball = new Sprite(function(my){
           my.width = 20;
           my.height = 20;

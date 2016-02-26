@@ -33,7 +33,7 @@ var gameStart = function(lv){
       right: 0,
       rightRun: 1,
       rightJump: 4
-    }, 8, [5,15,0,15]);
+    }, 8, [10,15,0,15]);
 
     my.onDead(function(){
       setTimeout(gameStart, 100);
@@ -94,17 +94,30 @@ var gameStart = function(lv){
   }).draw(100,200);
 
 
-  new Weed(600,300);
-  new Weed(900,300);
-  new Beetle(1000, 400);
-  new Weed(1200,300);
-  new Bat(800,400);
+  new Weed(600 + Math.random()*600,300);
+  new Mouse(400 + Math.random()*600,300,10+Math.random()*10);
 
-  new Mouse(500,400,20);
-  new Mouse(700,400,15);
-  new Mouse(300,400);
-  new Mouse(300,400,17,30,30);
-  new Beetle(4450, 400);
+  new Weed(1500 + Math.random()*1600,300);
+
+  new Beetle(4400 + Math.random()*50, 400);
+
+  new Weed(7000 + Math.random()*500,100);
+
+  new Bat(7300 + Math.random()*600,650+Math.random()*50);
+
+  new Weed(9000 + Math.random()*600,50);
+  new Mouse(9300 + Math.random()*400,300,10+Math.random()*10);
+
+  if(level != 1){
+    new Mouse(500,400,20);
+    new Mouse(700,400,15);
+    new Mouse(300,400);
+    new Mouse(300,400,17);
+    new Beetle(4450, 400);
+    new Beetle(1000, 400);
+    new Weed(1200,300);
+    new Bat(800,400);
+  }
 
   new Piece(1290, 420);
   new Piece(3250, 330);

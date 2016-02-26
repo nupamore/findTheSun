@@ -53,6 +53,7 @@ var Beetle = function(x, y){
 
       if(target.tag=='ball') return;
       if(target.tag=='monster') return;
+      if(target.tag=='water') return;
 
       switch(direction){
         case 'bottom':
@@ -64,8 +65,8 @@ var Beetle = function(x, y){
           my.y = target.y + target.height;
           my.ay = 0;
         break;
-        case 'right': my.x = target.x - my.width; break;
-        case 'left': my.x = target.x + target.width; break;
+        case 'right': my.x = target.x - my.width; my.ax = 0; break;
+        case 'left': my.x = target.x + target.width; my.ax = 0; break;
       }
 
     });

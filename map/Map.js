@@ -296,7 +296,7 @@ var initMap = function(){
   drawGroup(inground,6, 'up',    { x: 4050, y: 525 });
   drawGroup(branch, 3,  'up',    { x: 4100, y: 470, d: 80 });
   drawGroup(ground, 8,  'right', { x: 4100, y: 525 });
-  drawGroup(inground,10,'up',    { x: 4275, y: 370 });
+  drawGroup(inground,15,'up',    { x: 4275, y: 370 });
   drawGroup(branch, 2,  'up',    { x: 4225, y: 400, d: 80 });
   drawGroup(branch, 2,  'up',    { x: 4325, y: 400, d: 80 });
   drawGroup(inground,6, 'up',    { x: 4500, y: 525 });
@@ -314,7 +314,7 @@ var initMap = function(){
   // stage 3
   drawGroup(Sground, 5, 'right', { x: 5950, y: 225 });
   drawGroup(Moveground, 2, 'right', { x: 6250, y: 225, d: 100});
-  drawGroup(Moveground, 2, 'right', { x: 6380, y: 450, d: 100});
+  drawGroup(Moveground, 2, 'right', { x: 6370, y: 450, d: 100});
   // 윗길
   drawGroup(Sground, 4, 'right', { x: 6700, y: 225 });
   drawGroup(Sground, 4, 'right', { x: 6900, y: 250 });
@@ -330,8 +330,8 @@ var initMap = function(){
   // y축 테스트용
   drawGroup(Sground, 5,  'up', { x: 8100, y: 750, d: 110 });
   drawGroup(branch, 5,  'up', { x: 8200, y: 670, d: 140 });
-  drawGroup(Sground, 3,  'up', { x: 8500, y: 750, d: 110 });
-  drawGroup(Sground, 3,  'up', { x: 8550, y: 750, d: 110 });
+  drawGroup(Sground, 3,  'up', { x: 8400, y: 750, d: 110 });
+  drawGroup(Sground, 3,  'up', { x: 8450, y: 750, d: 110 });
   drawGroup(Sground, 8,  'right', { x: 8300, y: 100 });
   drawGroup(Sground, 10,  'right', { x: 8700, y: 150 });
   new WaterLayer(500,50).draw(8700,101);
