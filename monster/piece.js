@@ -31,6 +31,13 @@ var Piece = function(x, y){
     my.remove('crashes');
 
     my.onCrash(function(direction, target){
+      if(target.havepiece == 3){
+        if(clearStage < level){
+          clearStage = level;
+          //localStorage.setItem('clearStage', clearStage);
+          //localStorage.getItem('clearStage');
+        }
+      }
 
       if(target.tag == 'player'){
         my.dead();
