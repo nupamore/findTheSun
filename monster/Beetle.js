@@ -18,28 +18,29 @@ var Beetle = function(x, y){
       my.x = x;
       my.y = y;
       my.ax = 0;
-      interval = setInterval(function(){
-        var dx = Math.abs(my.x - player.x);
-        var dy = Math.abs(player.y - my.y);
-        if(dx < 400 && dy < 100){
-          if(my.x - player.x > 0){
-            my.state = 'leftwalk';
-            if(my.ax>-3.5) my.ax -= 0.06;
-            if(!my.jump && my.ax>2 && my.ax<2.1){
-              my.ay = -4;
-              my.jump = true;
-            }
-          }
-          if(my.x - player.x < 0){
-            my.state = 'rightwalk';
-            if(my.ax<3.5) my.ax += 0.06;
-            if(!my.jump && my.ax>2 && my.ax<2.1){
-              my.ay = -4;
-              my.jump = true;
-            }
+    });
+
+    my.update(function(){
+      var dx = Math.abs(my.x - player.x);
+      var dy = Math.abs(player.y - my.y);
+      if(dx < 400 && dy < 100){
+        if(my.x - player.x > 0){
+          my.state = 'leftwalk';
+          if(my.ax>-3.5) my.ax -= 0.03+(dx/40000);
+          if(!my.jump && my.ax>-3.1 && my.ax<-3){
+            my.ay = -3;
+            my.jump = true;
           }
         }
-      }, 10);
+        if(my.x - player.x < 0){
+          my.state = 'rightwalk';
+          if(my.ax<3.5) my.ax += 0.03+(dx/40000);
+          if(!my.jump && my.ax>3 && my.ax<3.1){
+            my.ay = -3;
+            my.jump = true;
+          }
+        }
+      }
     });
 
     my.animate(resource.beetle, 137, 191, {
@@ -58,10 +59,8 @@ var Beetle = function(x, y){
       if(target.tag == 'player'){
         if(direction == 'top'){
           my.dead();
-          clearInterval(interval);
         }else{
           target.dead();
-          clearInterval(interval);
         }
       }
 
