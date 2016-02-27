@@ -116,7 +116,7 @@ var gameStart = function(lv){
     my.gravity = true;
     my.tag = 'player';
     my.moveSpeed = 20;
-    
+
     my.start(function(){
         my.havepiece = 0;
     });
@@ -173,6 +173,9 @@ var gameStart = function(lv){
             my.ay = 0;
             if(target.tag == 'star'){
               my.jump = true;
+            }else if(target.tag == 'monster'){
+              my.jump = true;
+              my.ay = -3;
             }else{
               my.jump = false;
             }

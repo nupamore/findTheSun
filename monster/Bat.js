@@ -23,6 +23,8 @@ var Bat = function(x, y, speed){
     }, 5);
 
     my.start(function(){
+      my.x = x;
+      my.y = y;
       my.setInterval(function(){
         if(directSW == false){
           my.state = 'rightwalk';

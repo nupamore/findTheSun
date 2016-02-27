@@ -20,6 +20,10 @@ var Mouse = function(x, y, speed, w, h){
       }
     });
 
+    my.start(function(){
+      my.x = x;
+      my.y = y;
+    });
     /*
     my.animate(resource.mouse, 18, 18, {
       left: 0,
