@@ -1,5 +1,6 @@
 
-var Weed = function(x, y){
+var Weed = function(x, y, speed){
+  var ballSpeed = speed || 1;
   var weed = new Sprite(function(my){
 
     my.x = x;
@@ -70,6 +71,7 @@ var Weed = function(x, y){
               var xup = weed.x - player.x;
               var yup = weed.y+(weed.height/2) - (player.y+(player.height/2));
 
+
               // 애니메이션 변환
               var before = weed.state;
               if(xup >= 0){
@@ -88,8 +90,8 @@ var Weed = function(x, y){
 
               var distance = Math.sqrt(Math.pow(xup, 2) + Math.pow(yup, 2));
 
-              my.ax = -xup/distance;
-              my.ay = -yup/distance;
+              my.ax = -xup/distance * ballSpeed;
+              my.ay = -yup/distance * ballSpeed;
 
               my.gravity = false;
 

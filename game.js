@@ -48,18 +48,18 @@ var pro = [
 // Master
 var master = [
   new Mouse(1000,300,10+Math.random()*10),
-  new Weed(2000 + Math.random()*500,300),
+  new Weed(2700,300),
   new Mouse(2100 + Math.random()*600,300,10+Math.random()*10),
   new Mouse(2400 + Math.random()*600,300,10+Math.random()*10),
   new Beetle(2800 + Math.random()*700,300),
-  new Weed(4200,300),
-  new Bat(4300 + Math.random()*100,350+Math.random()*10),
+  new Weed(4700,300),
+  new Bat(4400,400+Math.random()*10),
   new Weed(5200,200),
   new Mouse(5100 + Math.random()*400,100,10+Math.random()*10),
   new Weed(6400,200),
   new Weed(7700,100),
   new Beetle(7400 + Math.random()*500,600),
-  new Weed(8400,200),
+  new Weed(8400,550,2),
   new Mouse(9100 + Math.random()*400,100,10+Math.random()*10),
   new Beetle(9400 + Math.random()*300,200),
   new Weed(9700,300)
@@ -69,14 +69,14 @@ var master = [
 var master2 = [
   new Weed(300,300),
   new Mouse(300 + Math.random()*600,300,15+Math.random()*10),
-  new Weed(2500,300),
+  new Weed(2600,300),
   new Beetle(1500 + Math.random()*500,600),
   new Bat(2200 + Math.random()*800,400+Math.random()*50),
   new Beetle(2500 + Math.random()*800,600),
   new Mouse(3200 + Math.random()*600,300,10+Math.random()*10),
   new Weed(3650,300),
   new Beetle(4400 + Math.random()*200,600),
-  new Weed(4950,200),
+  new Weed(5000+Math.random()*200,200),
   new Weed(5700,200),
   new Mouse(5400 + Math.random()*400,200,10+Math.random()*10),
   new Beetle(5500 + Math.random()*300,300),
@@ -85,7 +85,7 @@ var master2 = [
   new Beetle(7400 + Math.random()*400,100),
   new Beetle(7700 + Math.random()*600,600),
   new Bat(7300 + Math.random()*100,650+Math.random()*30),
-  new Weed(8400,600),
+  new Weed(8400,650,2.5),
   new Bat(8500 + Math.random()*100,60+Math.random()*30),
   new Mouse(9100 + Math.random()*600,100,10+Math.random()*10),
   new Weed(8900,100),
@@ -128,7 +128,8 @@ var player = new Sprite(function(my){
     my.death++;
     my.ay = 0;
     setTimeout(function(){
-      gameStart(level);
+      my.draw(0,-30);
+      //gameStart(level);
     }, 100);
   });
 
