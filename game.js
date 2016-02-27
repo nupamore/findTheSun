@@ -2,6 +2,9 @@
 var clearStage = 0;
 var level;
 
+BGM.new('bgm/ganba.mp3', 1);
+BGM.new('bgm/iu.mp3', 2);
+BGM.newSe('bgm/shot.mp3',1);
 initMap();
 
 // Debut
@@ -170,6 +173,7 @@ var player = new Sprite(function(my){
           if(target.tag == 'star'){
             my.jump = true;
           }else if(target.tag == 'monster'){
+            BGM.sePlay(1,5);
             my.jump = true;
             my.ay = -3;
           }else{
@@ -202,7 +206,8 @@ var gameStart = function(lv){
   player.draw(100,200);
   Camera.target = player;
 
-
+  BGM.play(1, 10, false);
+  BGM.play(2, 2, true);
 
   for(var i in debut){
     debut[i].draw();
