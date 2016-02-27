@@ -65,6 +65,7 @@ var Weed = function(x, y){
               my.width = 20;
               my.height = 20;
               my.tag = 'ball';
+              my.static = true;
 
               var xup = weed.x - player.x;
               var yup = weed.y+(weed.height/2) - (player.y+(player.height/2));

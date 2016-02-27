@@ -176,21 +176,23 @@ var initMap = function(){
         rightJump: 0
       }, 5, [40,5,5,5]);
 
-      my.setInterval(function(){
-        if(directSW == false){
-          directSW = true;
-        }else if(directSW == true){
-          directSW = false;
-        }
-      }, 1000);
+      my.start(function(){
+        my.setInterval(function(){
+          if(directSW == false){
+            directSW = true;
+          }else if(directSW == true){
+            directSW = false;
+          }
+        }, 1000);
 
-      my.setInterval(function(){
-        if(directSW == false){
-          my.state = 'rightwalk';
-        }else if(directSW == true){
-          my.state = 'leftwalk';
-        }
-      }, 100);
+        my.setInterval(function(){
+          if(directSW == false){
+            my.state = 'rightwalk';
+          }else if(directSW == true){
+            my.state = 'leftwalk';
+          }
+        }, 100);
+      });
 
       my.remove('crashes');
 
@@ -351,6 +353,10 @@ var initMap = function(){
 };
 
 var renderMap = function(){
+  map[1].alp = 0;
+  map[2].alp = 0;
+  map[3].alp = 0;
+  map[4].alp = 0;
   for(var i in map){
     map[i].draw();
   }

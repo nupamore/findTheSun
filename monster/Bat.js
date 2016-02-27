@@ -22,21 +22,23 @@ var Bat = function(x, y, speed){
       rightJump: 0
     }, 5);
 
-    my.setInterval(function(){
-      if(directSW == false){
-        my.state = 'rightwalk';
-      }else if(directSW == true){
-        my.state = 'leftwalk';
-      }
-    }, 100);
+    my.start(function(){
+      my.setInterval(function(){
+        if(directSW == false){
+          my.state = 'rightwalk';
+        }else if(directSW == true){
+          my.state = 'leftwalk';
+        }
+      }, 100);
 
-    my.setInterval(function(){
-      if(directSW == false){
-        directSW = true;
-      }else if(directSW == true){
-        directSW = false;
-      }
-    }, 1000);
+      my.setInterval(function(){
+        if(directSW == false){
+          directSW = true;
+        }else if(directSW == true){
+          directSW = false;
+        }
+      }, 1000);
+    });
 
     my.remove('crashes');
 

@@ -18,13 +18,15 @@ var Piece = function(x, y){
       }
     });
 
-    my.setInterval(function(){
-      if(directSW == false){
-        directSW = true;
-      }else if(directSW == true){
-        directSW = false;
-      }
-    }, 800);
+    my.start(function(){
+      my.setInterval(function(){
+        if(directSW == false){
+          directSW = true;
+        }else if(directSW == true){
+          directSW = false;
+        }
+      }, 800);
+    });
 
     my.renderer(function(){
       ctx.drawImage(resource.piece, my.x, my.y, my.width, my.height);
