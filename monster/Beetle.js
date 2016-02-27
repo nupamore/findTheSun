@@ -24,12 +24,12 @@ var Beetle = function(x, y){
         if(dx < 350 && dy < 80){
           if(my.x - player.x > 0){
             my.state = 'leftwalk';
-            my.ax -= 0.08;
+            if(my.ax>-3.5) my.ax -= 0.05;
             if(my.ax>2 && my.ax<2.1) my.ay = -4;
           }
           if(my.x - player.x < 0){
             my.state = 'rightwalk';
-            my.ax += 0.08;
+            if(my.ax<3.5) my.ax += 0.05;
             if(my.ax>2 && my.ax<2.2) my.ay = -4;
           }
         }

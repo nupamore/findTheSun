@@ -94,9 +94,16 @@ var Weed = function(x, y){
               my.gravity = false;
 
 
-              my.renderer(function(){
-                ctx.drawImage(resource.ball, my.x, my.y, my.width, my.height);
-              });
+              my.animate(resource.ball, 32, 32, {
+                left: 0,
+                leftRun: 0,
+                leftJump: 0,
+                right: 0,
+                rightRun: 0,
+                rightJump: 0,
+                leftbehave: 0,
+                rightbehave: 0
+              }, 4);
 
               my.remove('crashes');
 

@@ -156,6 +156,7 @@ var initMap = function(){
   };
 
   var Moveground = function(){
+    var x,y;
     return new Sprite(function(my){
       my.width = 100;
       my.height = 40;
@@ -177,6 +178,14 @@ var initMap = function(){
       }, 5, [40,5,5,5]);
 
       my.start(function(){
+        if(!x){
+          x = my.x;
+          y = my.y;
+        }
+        my.x = x;
+        my.y = y;
+        my.state = 'left';
+        directSW = false;
         my.setInterval(function(){
           if(directSW == false){
             directSW = true;

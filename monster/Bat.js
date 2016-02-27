@@ -23,6 +23,7 @@ var Bat = function(x, y, speed){
     }, 5);
 
     my.start(function(){
+      directSW = false;
       my.x = x;
       my.y = y;
       my.setInterval(function(){
