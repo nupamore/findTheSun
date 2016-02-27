@@ -1,6 +1,5 @@
 
 var clearStage = 0;
-var player;
 var level;
 
 initMap();
@@ -96,7 +95,99 @@ var master2 = [
   new Weed(10300,200)
 ];
 
+var player = new Sprite(function(my){
 
+  my.width = 20;
+  my.height = 60;
+
+  my.gravity = true;
+  my.tag = 'player';
+  my.moveSpeed = 20;
+
+  my.death = 0;
+  my.time = 0;
+
+  my.start(function(){
+    my.havepiece = 0;
+  });
+
+  my.animate(resource.player, 133, 191, {
+    left: 2,
+    leftRun: 3,
+    leftJump: 5,
+    right: 0,
+    rightRun: 1,
+    rightJump: 4
+  }, 8, [10,15,0,15]);
+
+  my.update(function(){
+    my.time+=10;
+    if(my.ay>20) my.dead();
+  });
+  my.onDead(function(){
+    my.death++;
+    my.ay = 0;
+    setTimeout(function(){
+      gameStart(level);
+    }, 100);
+  });
+
+  my.remove('crashes');
+  my.onCrash(function(direction, target){
+    if(target.tag == 'water'){
+      my.x -= 0.45;
+      if(my.ay>1){
+        my.ay -= 0.2;
+      }
+      else if(my.ay<-1){
+        my.ay += 0.2;
+      }
+      my.jump = false;
+      return;
+    }
+    if(target.tag == 'ball'){
+      my.dead();
+      return;
+    }
+    if(target.tag == 'branch'){
+      if(direction=='bottom' && my.ay>0 && (my.y+my.height)<target.y+10){
+        my.y = target.y - my.height;
+        my.ay = 0;
+        my.jump = false;
+        setTimeout(function(){
+          target.dead();
+        },1000)
+        setTimeout(function(){
+          target.draw();
+        },3000)
+      }
+    }
+    else{
+      switch(direction){
+        case 'bottom':
+          my.y = target.y - my.height;
+          my.ay = 0;
+          if(target.tag == 'star'){
+            my.jump = true;
+          }else if(target.tag == 'monster'){
+            my.jump = true;
+            my.ay = -3;
+          }else{
+            my.jump = false;
+          }
+        break;
+        case 'top':
+          my.y = target.y + target.height;
+          my.ay = 0;
+        break;
+        case 'right': my.x = target.x - my.width; break;
+        case 'left': my.x = target.x + target.width; break;
+      }
+    }
+
+  });
+
+});
 
 var gameStart = function(lv){
   Camera.set(-Camera.x, -Camera.y);
@@ -108,90 +199,8 @@ var gameStart = function(lv){
   }
   renderMap();
 
-  player = new Sprite(function(my){
-
-    my.width = 20;
-    my.height = 60;
-
-    my.gravity = true;
-    my.tag = 'player';
-    my.moveSpeed = 20;
-
-    my.start(function(){
-        my.havepiece = 0;
-    });
-
-    my.animate(resource.player, 133, 191, {
-      left: 2,
-      leftRun: 3,
-      leftJump: 5,
-      right: 0,
-      rightRun: 1,
-      rightJump: 4
-    }, 8, [10,15,0,15]);
-
-    my.onDead(function(){
-      setTimeout(function(){
-        gameStart(level);
-      }, 100);
-    });
-
-    my.remove('crashes');
-    my.onCrash(function(direction, target){
-      if(target.tag == 'water'){
-        my.x -= 0.45;
-        if(my.ay>1){
-          my.ay -= 0.2;
-        }
-        else if(my.ay<-1){
-          my.ay += 0.2;
-        }
-        my.jump = false;
-        return;
-      }
-      if(target.tag == 'ball'){
-        my.dead();
-        return;
-      }
-      if(target.tag == 'branch'){
-        if(direction=='bottom' && my.ay>0 && (my.y+my.height)<target.y+10){
-          my.y = target.y - my.height;
-          my.ay = 0;
-          my.jump = false;
-          setTimeout(function(){
-            target.dead();
-          },1000)
-          setTimeout(function(){
-            target.draw();
-          },3000)
-        }
-      }
-      else{
-        switch(direction){
-          case 'bottom':
-            my.y = target.y - my.height;
-            my.ay = 0;
-            if(target.tag == 'star'){
-              my.jump = true;
-            }else if(target.tag == 'monster'){
-              my.jump = true;
-              my.ay = -3;
-            }else{
-              my.jump = false;
-            }
-          break;
-          case 'top':
-            my.y = target.y + target.height;
-            my.ay = 0;
-          break;
-          case 'right': my.x = target.x - my.width; break;
-          case 'left': my.x = target.x + target.width; break;
-        }
-      }
-
-    });
-
-  }).draw(100,200);
+  player.draw(100,200);
+  Camera.target = player;
 
 
 
@@ -219,7 +228,4 @@ var gameStart = function(lv){
     }
   }
 
-
-
-  Camera.target = player;
 };

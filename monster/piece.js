@@ -1,3 +1,15 @@
+var insertRank = function(player, level, death, time){
+  $.ajax({
+    dataType: 'jsonp',
+    data: 'rank={"player":"'+player+'", "level":'+level+', "death":'+death+', "time":'+time+'}',
+    jsonp: 'callback',
+    url: 'http://nupa.fun25.co.kr:17903/insert?callback=?',
+    success: function(data) {
+      console.log(data);
+    }
+  });
+};
+
 var Piece = function(x, y){
   var piece = new Sprite(function(my){
 
@@ -35,7 +47,12 @@ var Piece = function(x, y){
     my.remove('crashes');
 
     my.onCrash(function(direction, target){
-      if(target.havepiece == 3){
+      if(target.tag == 'player'){
+        my.dead();
+        target.havepiece += 1;
+      }
+
+      if(target.havepiece == 4){
         if(clearStage < level){
           clearStage = level;
           localStorage.setItem('clearStage', clearStage);
@@ -44,11 +61,19 @@ var Piece = function(x, y){
         target.tag = 'clear';
         target.state = 'jump';
         my.dead();
-      }
 
-      if(target.tag == 'player'){
-        my.dead();
-        target.havepiece += 1;
+        if(level<4){
+          setTimeout(function(){
+            location.reload();
+          }, 3000);
+        }
+        else{
+          setTimeout(function(){
+            var name = prompt('이름을 입력해주세요','');
+            insertRank(name, level, player.death, player.time);
+            location.reload();
+          }, 1000);
+        }
       }
 
       if(target.tag=='ball') return;
