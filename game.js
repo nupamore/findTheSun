@@ -128,8 +128,7 @@ var player = new Sprite(function(my){
     my.death++;
     my.ay = 0;
     setTimeout(function(){
-      my.draw(0,-30);
-      //gameStart(level);
+      gameStart(level);
     }, 100);
   });
 

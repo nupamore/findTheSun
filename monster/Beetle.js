@@ -24,13 +24,19 @@ var Beetle = function(x, y){
         if(dx < 400 && dy < 100){
           if(my.x - player.x > 0){
             my.state = 'leftwalk';
-            if(my.ax>-3.5) my.ax -= 0.05;
-            if(my.ax>2 && my.ax<2.1) my.ay = -4;
+            if(my.ax>-3.5) my.ax -= 0.06;
+            if(!my.jump && my.ax>2 && my.ax<2.1){
+              my.ay = -4;
+              my.jump = true;
+            }
           }
           if(my.x - player.x < 0){
             my.state = 'rightwalk';
-            if(my.ax<3.5) my.ax += 0.05;
-            if(my.ax>2 && my.ax<2.2) my.ay = -4;
+            if(my.ax<3.5) my.ax += 0.06;
+            if(!my.jump && my.ax>2 && my.ax<2.1){
+              my.ay = -4;
+              my.jump = true;
+            }
           }
         }
       }, 10);

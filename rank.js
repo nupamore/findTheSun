@@ -10,6 +10,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 var rank = [];
+rank.push({
+  player:'우즈키',
+  level: '4',
+  death: 100,
+  time: 3600000
+});
 
 app.get('/insert',function  (req,res) {
   rank.push( JSON.parse(req.query.rank) );
