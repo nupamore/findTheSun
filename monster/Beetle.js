@@ -21,7 +21,7 @@ var Beetle = function(x, y){
       interval = setInterval(function(){
         var dx = Math.abs(my.x - player.x);
         var dy = Math.abs(player.y - my.y);
-        if(dx < 350 && dy < 80){
+        if(dx < 400 && dy < 100){
           if(my.x - player.x > 0){
             my.state = 'leftwalk';
             if(my.ax>-3.5) my.ax -= 0.05;

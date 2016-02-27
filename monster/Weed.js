@@ -60,7 +60,7 @@ var Weed = function(x, y){
       setTimeout(function(){
         my.setInterval(function(){
           var dx = Math.abs(weed.x - player.x);
-          if(dx < 350 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
+          if(dx < 400 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
             var ball = new Sprite(function(my){
               my.width = 20;
               my.height = 20;

@@ -41,6 +41,9 @@ var Piece = function(x, y){
           localStorage.setItem('clearStage', clearStage);
           localStorage.getItem('clearStage');
         }
+        target.tag = 'clear';
+        target.state = 'jump';
+        my.dead();
       }
 
       if(target.tag == 'player'){
