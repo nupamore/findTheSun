@@ -323,7 +323,8 @@ var initMap = function(){
   // stage 3
   drawGroup(Sground, 5, 'right', { x: 5950, y: 225 });
   drawGroup(Moveground, 2, 'right', { x: 6250, y: 225, d: 100});
-  drawGroup(Moveground, 2, 'right', { x: 6370, y: 450, d: 100});
+  drawGroup(Moveground, 2, 'right', { x: 6370, y: 425, d: 100});
+  drawGroup(Moveground, 1, 'right', { x: 6700, y: 610, d: 100});
   // 윗길
   drawGroup(Sground, 4, 'right', { x: 6700, y: 225 });
   drawGroup(Sground, 4, 'right', { x: 6900, y: 250 });

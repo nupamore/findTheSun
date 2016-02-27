@@ -10,20 +10,11 @@ resource.player.src = 'img/uzuki.png';
 resource.weed = new Image();
 resource.weed.src = 'img/yuko.png';
 
-resource.ball = new Image();
-resource.ball.src = 'img/ball.png';
-
-resource.bat = new Image();
-resource.bat.src = 'img/mio.png';
-
 resource.mouse = new Image();
 resource.mouse.src = 'img/pikachu.png';
 
 resource.beetle = new Image();
 resource.beetle.src = 'img/miria.png';
-
-resource.piece = new Image();
-resource.piece.src = 'img/star.png';
 
 // background
 resource.bg2 = new Image();
@@ -44,3 +35,16 @@ resource.intro.src = 'img/intro.png';
 
 resource.bg1 = new Image();
 resource.bg1.src = 'img/background1.png';
+
+// lazy
+resource.ball = new Image();
+resource.ball.src = 'img/ball.png';
+
+resource.bat = new Image();
+resource.bat.src = 'img/mio.png';
+
+resource.piece = new Image();
+resource.piece.src = 'img/star.png';
+
+resource.clear = new Image();
+resource.clear.src = 'img/clear.png';

@@ -62,6 +62,24 @@ var Piece = function(x, y){
         target.state = 'jump';
         my.dead();
 
+        // clear
+        new Sprite(function(my){
+          my.width = 800;
+          my.height = 600;
+          my.collision = false;
+          my.tag = 'background';
+          my.alp = 0;
+
+          my.renderer(function(){
+            ctx.save();
+            ctx.globalAlpha = my.alp+=0.01;
+            ctx.drawImage(resource.clear, my.x, my.y, my.width, my.height);
+            ctx.restore();
+          });
+
+          my.draw();
+        });
+
         if(level<4){
           setTimeout(function(){
             location.reload();
