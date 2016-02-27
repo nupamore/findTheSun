@@ -89,8 +89,8 @@
 </div>
 </center>
 
-<div style="visibility: hidden;">
-  <iframe width="300" height="25" src="http://www.youtube.com/embed/zBgy4lrOdt4?autoplay=1&playlist=zBgy4lrOdt4&loop=1&showinfo=0&fs=0&rel=0" frameborder="0" allowfullscreen></iframe>
+<div id="bgm" style="visibility: hidden;">
+  <iframe width="300" height="25" src="http://www.youtube.com/embed/vE8Df0k-mD4?autoplay=1&playlist=vE8Df0k-mD4&loop=1&showinfo=0&fs=0&rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 
 </body>
@@ -146,6 +146,8 @@ $('.button').click(function(){
 
   intro.dead();
   gameStart(level);
+
+  $('#bgm').html('<iframe width="300" height="25" src="http://www.youtube.com/embed/zBgy4lrOdt4?autoplay=1&playlist=zBgy4lrOdt4&loop=1&showinfo=0&fs=0&rel=0" frameborder="0" allowfullscreen></iframe>');
 });
 </script>
 

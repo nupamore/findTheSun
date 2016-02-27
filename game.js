@@ -3,7 +3,6 @@ var clearStage = 0;
 var level;
 
 BGM.new('bgm/ganba.mp3', 1);
-BGM.new('bgm/iu.mp3', 2);
 BGM.newSe('bgm/shot.mp3',1);
 initMap();
 
@@ -193,7 +192,7 @@ var player = new Sprite(function(my){
 
 });
 
-var gameStart = function(lv){
+var gameStart = function(lv){  
   Camera.set(-Camera.x, -Camera.y);
 
   level = lv || 1;
@@ -207,7 +206,6 @@ var gameStart = function(lv){
   Camera.target = player;
 
   BGM.play(1, 10, false);
-  BGM.play(2, 2, true);
 
   for(var i in debut){
     debut[i].draw();
