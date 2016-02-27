@@ -1,7 +1,5 @@
 var resource = {};
 
-resource.gameObject = {};
-
 // game
 resource.tile = new Image();
 resource.tile.src = 'img/tile.png';

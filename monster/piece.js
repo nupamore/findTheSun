@@ -38,8 +38,8 @@ var Piece = function(x, y){
       if(target.havepiece == 3){
         if(clearStage < level){
           clearStage = level;
-          //localStorage.setItem('clearStage', clearStage);
-          //localStorage.getItem('clearStage');
+          localStorage.setItem('clearStage', clearStage);
+          localStorage.getItem('clearStage');
         }
       }
 

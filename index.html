@@ -43,10 +43,17 @@
         font-size: 20;
         transition: 0.3s;
       }
+      .button-disable{
+        margin: 10px;
+        color: #aaa;
+        font-size: 20;
+        cursor: pointer;
+      }
       .button:hover {
-      color:#fff;
-      cursor: pointer;
-    }
+        color:#fff;
+        cursor: pointer;
+        font-size: 24;
+      }
     </style>
   </head>
 <body>
@@ -57,10 +64,10 @@
 
   <div id="button-container" style="top:360px;">
     <div class="button">Debut</div>
-    <div class="button">Regular</div>
-    <div class="button">Pro</div>
-    <div class="button">Master</div>
-    <div class="button">Master+</div>
+    <div class="button-disable">Regular</div>
+    <div class="button-disable">Pro</div>
+    <div class="button-disable">Master</div>
+    <div class="button-disable">Master+</div>
   </div>
 </div>
 </center>
@@ -80,6 +87,13 @@
 
 <script src="game.js"></script>
 <script>
+
+clearStage = localStorage.getItem('clearStage') || 0;
+
+for(var i=0; i<clearStage; i++){
+  $('.button-disable')[0].className = 'button';
+};
+
 var intro = new Sprite(function(my){
   my.width = 800;
   my.height = 600;
