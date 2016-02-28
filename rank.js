@@ -10,15 +10,34 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 var rank = [];
-rank.push({
-  player:'우즈키',
-  level: '4',
-  death: 100,
-  time: 3600000
-});
+
+var sortRank = function(){
+  rank.sort(function (a, b) {
+    if (a.time > b.time) {
+      return 1;
+    }
+    if (a.time < b.time) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+  rank.sort(function (a, b) {
+    if (a.level > b.level) {
+      return -1;
+    }
+    if (a.level < b.level) {
+      return 1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+};
 
 app.get('/insert',function  (req,res) {
   rank.push( JSON.parse(req.query.rank) );
+  sortRank();
+
   res.type('application/json');
   res.jsonp( rank );
   console.log(rank);

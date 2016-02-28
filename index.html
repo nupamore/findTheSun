@@ -12,7 +12,7 @@
           success: function(data) {
             var text = '<table id=rank-table cellspacing=15>';
             text += '<tr>';
-            text += '<td> rank </td><td> name </td><td> level </td><td> death </td><td> time </td>';
+            text += '<td> rank </td><td> name </td><td> level </td><td> time </td>';
             text += '</tr>';
             for(var i in data){
               var levelName = {
@@ -23,7 +23,7 @@
                 5:'Master+'
               }[data[i].level];
               text += '<tr>';
-              text += '<td>' +(i*1+1)+ '</td><td>' + data[i].player +'</td><td>'+ levelName +'</td><td>'+ data[i].death +'</td><td>'+ data[i].time/1000 + 's </td>';
+              text += '<td>' +(i*1+1)+ '</td><td>' + data[i].player +'</td><td>'+ levelName +'</td><td>'+ data[i].time/1000 + 's </td>';
               text += '</tr>';
             }
             text += '</table>';
