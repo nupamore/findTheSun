@@ -75,9 +75,9 @@ var master = [
   new Mouse(5100 + Math.random()*100,100,13+Math.random()*10),
   new Weed(5150,100,1.5,500,1800),
   new Weed(7700,100,1.5,500,1800),
-  new Bat(6500 + Math.random()*50,300),
+  new Bat(6500,300),
   new Beetle(7400 + Math.random()*500,600),
-  new Beetle(7800 + Math.random()*100,600),
+  new Beetle(7800,600),
   new Weed(8400,550,2,500,1700),
   new Beetle(8500 + Math.random()*200,100),
   new Beetle(8900 + Math.random()*200,100),
@@ -97,17 +97,17 @@ var master2 = [
   new Bat(2300 + Math.random()*100,300+Math.random()*50),
   new Beetle(2500 + Math.random()*800,600),
   new Mouse(3200 + Math.random()*600,200,15+Math.random()*10),
-  new Weed(3500,300,1.2,500,1700),
-  new Beetle(4400 + Math.random()*200,600),
+  new Weed(3500,200,1.2,500,1700),
+  new Beetle(4600,600),
   new Weed(5450,200,2,600,1700),
-  new Weed(5700,200,1,500),
+  new Weed(5700,200,2,500),
   new Mouse(5400 + Math.random()*400,200,15+Math.random()*10),
   new Beetle(5500 + Math.random()*300,300),
   new Beetle(6200 + Math.random()*500,600),
   new Weed(6750,150,1,500),
   new Mouse(7400 + Math.random()*300,100,12+Math.random()*10),
   new Beetle(7400 + Math.random()*400,100),
-  new Beetle(7700 + Math.random()*600,600),
+  new Beetle(7700 + Math.random()*300,600),
   new Bat(7300 + Math.random()*100,650+Math.random()*30),
   new Weed(8400,650,2.5,500),
   new Bat(8600 + Math.random()*100,10+Math.random()*20),
@@ -156,8 +156,8 @@ var player = new Sprite(function(my){
     my.ay = 0;
     my.time = 0;
     setTimeout(function(){
-      my.draw(0,100)
-      //gameStart(level);
+      //my.draw(0,100)
+      gameStart(level);
     }, 100);
   });
 
