@@ -197,6 +197,7 @@ var initMap = function(){
           }else if(directSW == true){
             directSW = false;
           }
+          directNumber = 0;
         }
         if(directSW == false){
           my.state = 'rightwalk';

@@ -55,7 +55,7 @@ var master = [
   new Mouse(2400 + Math.random()*600,300,10+Math.random()*10),
   new Beetle(2800 + Math.random()*700,300),
   new Weed(4700,300),
-  new Bat(4400,410+Math.random()*10),
+  new Bat(4300 + Math.random()*50,430),
   new Weed(5200,200,1.5),
   new Mouse(5100 + Math.random()*400,100,10+Math.random()*10),
   new Weed(6400,200),
@@ -73,7 +73,7 @@ var master2 = [
   new Mouse(300 + Math.random()*600,300,15+Math.random()*10),
   new Weed(2600,200,1.5),
   new Beetle(1500 + Math.random()*500,600),
-  new Bat(2200 + Math.random()*300,370+Math.random()*50),
+  new Bat(2200 + Math.random()*200,300+Math.random()*50),
   new Beetle(2500 + Math.random()*800,600),
   new Mouse(3200 + Math.random()*600,300,10+Math.random()*10),
   new Weed(3850,200,1.5),
@@ -129,6 +129,7 @@ var player = new Sprite(function(my){
   my.onDead(function(){
     my.death++;
     my.ay = 0;
+    my.time = 0;
     setTimeout(function(){
       my.draw(0,100)
       //gameStart(level);
