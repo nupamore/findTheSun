@@ -4,8 +4,8 @@ var Bat = function(x, y, speed){
 
     my.x = x;
     my.y = y;
-    my.width = 44;
-    my.height = 32;
+    my.width = 40;
+    my.height = 22;
     my.moveSpeed = speed || 10;
     my.tag = 'monster';
     my.jump = false;
@@ -20,7 +20,7 @@ var Bat = function(x, y, speed){
       right: 0,
       rightRun: 1,
       rightJump: 0
-    }, 5);
+    }, 5,[10,2,0,2]);
 
     my.start(function(){
       directSW = false;

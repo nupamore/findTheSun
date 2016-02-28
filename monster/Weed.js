@@ -6,7 +6,7 @@ var Weed = function(x, y, speed){
     my.x = x;
     my.y = y;
     my.width = 40;
-    my.height = 60;
+    my.height = 50;
     my.tag = 'monster';
 
     my.gravity = true;
@@ -20,7 +20,7 @@ var Weed = function(x, y, speed){
       rightJump: 0,
       leftbehave: 3,
       rightbehave: 1
-    }, 10, [10, 5, 0, 5]);
+    }, 10, [20, 5, 0, 5]);
 
     my.ani.repeat = true;
 
@@ -64,8 +64,8 @@ var Weed = function(x, y, speed){
           var dy = Math.abs(weed.y - player.y);
           if(dx < 400 && dy < 200 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
             var ball = new Sprite(function(my){
-              my.width = 20;
-              my.height = 20;
+              my.width = 16;
+              my.height = 16;
               my.tag = 'ball';
               my.static = true;
 
@@ -106,7 +106,7 @@ var Weed = function(x, y, speed){
                 rightJump: 0,
                 leftbehave: 0,
                 rightbehave: 0
-              }, 4);
+              }, 4,[2,2,2,2]);
 
               my.remove('crashes');
 
