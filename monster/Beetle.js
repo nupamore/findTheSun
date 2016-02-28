@@ -4,7 +4,7 @@ var Beetle = function(x, y){
     my.x = x;
     my.y = y;
     my.width = 30;
-    my.height = 20;
+    my.height = 25;
     my.moveSpeed = 3;
     my.tag = 'monster';
     my.state = 'left';
@@ -50,7 +50,7 @@ var Beetle = function(x, y){
       right: 0,
       rightRun: 0,
       rightJump: 0
-    }, 10, [20,0,0,0]);
+    }, 10, [30,5,0,5]);
 
     my.remove('crashes');
 

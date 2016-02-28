@@ -4,7 +4,7 @@ var Mouse = function(x, y, speed, w, h){
     my.x = x;
     my.y = y;
     my.width = w || 30;
-    my.height = h || 20;
+    my.height = h || 30;
     my.moveSpeed = speed || 10;
     my.tag = 'monster';
 
@@ -43,7 +43,7 @@ var Mouse = function(x, y, speed, w, h){
       right: 0,
       rightRun: 0,
       rightJump: 0
-    }, 10, [20,0,0,0]);
+    }, 10, [25,5,0,5]);
 
     my.remove('crashes');
 

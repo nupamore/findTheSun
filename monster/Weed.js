@@ -1,11 +1,13 @@
 
-var Weed = function(x, y, speed){
+var Weed = function(x, y, speed, d, t){
   var ballSpeed = speed || 1;
+  var distance = d || 400;
+  var time = t || 2000;
   var weed = new Sprite(function(my){
 
     my.x = x;
     my.y = y;
-    my.width = 40;
+    my.width = 35;
     my.height = 50;
     my.tag = 'monster';
 
@@ -20,7 +22,7 @@ var Weed = function(x, y, speed){
       rightJump: 0,
       leftbehave: 3,
       rightbehave: 1
-    }, 10, [20, 5, 0, 5]);
+    }, 10, [20, 7, 0, 8]);
 
     my.ani.repeat = true;
 
@@ -62,7 +64,7 @@ var Weed = function(x, y, speed){
         my.setInterval(function(){
           var dx = Math.abs(weed.x - player.x);
           var dy = Math.abs(weed.y - player.y);
-          if(dx < 400 && dy < 200 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
+          if(dx < distance && dy < 250 && sprites[weed.id] && sprites[player.id]){    // 잡초와 플레이어가 존재할때만
             var ball = new Sprite(function(my){
               my.width = 16;
               my.height = 16;
@@ -114,7 +116,7 @@ var Weed = function(x, y, speed){
 
             }).draw(weed.x+(weed.width/4), weed.y+(weed.height/5));
           }
-        }, 2000);
+        }, time);
       },400);
     });
 
