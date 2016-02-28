@@ -73,7 +73,7 @@ var master2 = [
   new Mouse(300 + Math.random()*600,300,15+Math.random()*10),
   new Weed(2600,200,1.5),
   new Beetle(1500 + Math.random()*500,600),
-  new Bat(2200 + Math.random()*200,300+Math.random()*50),
+  new Bat(2300 + Math.random()*100,300+Math.random()*50),
   new Beetle(2500 + Math.random()*800,600),
   new Mouse(3200 + Math.random()*600,300,10+Math.random()*10),
   new Weed(3850,200,1.5),
