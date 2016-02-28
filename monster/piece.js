@@ -87,7 +87,13 @@ var Piece = function(x, y){
         }
         else{
           setTimeout(function(){
-            var name = prompt('이름을 입력해주세요','');
+            var name = prompt({
+              1:'Debut',
+              2:'Regular',
+              3:'Pro',
+              4:'Master',
+              5:'Master+'
+            }[level]+' '+player.time/1000+'s\n\n이름을 입력해주세요','');
             insertRank(name, level, player.time);
             location.reload();
           }, 1000);

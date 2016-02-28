@@ -3,6 +3,7 @@ var clearStage = 0;
 var level;
 
 BGM.new('bgm/ganba.mp3', 1);
+BGM.newSe('bgm/yameru.mp3',2);
 BGM.newSe('bgm/shot.mp3',1);
 initMap();
 

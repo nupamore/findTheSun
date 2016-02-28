@@ -15,6 +15,7 @@
             text += '<td> rank </td><td> name </td><td> level </td><td> time </td>';
             text += '</tr>';
             for(var i in data){
+              if(i>19) continue;
               var levelName = {
                 1:'Debut',
                 2:'Regular',
