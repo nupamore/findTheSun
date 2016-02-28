@@ -1,7 +1,7 @@
-var insertRank = function(player, level, death, time){
+var insertRank = function(player, level, time){
   $.ajax({
     dataType: 'jsonp',
-    data: 'rank={"player":"'+player+'", "level":'+level+', "death":'+death+', "time":'+time+'}',
+    data: 'rank={"player":"'+player+'", "level":'+level+', "time":'+time+'}',
     jsonp: 'callback',
     url: 'http://nupa.fun25.co.kr:17903/insert?callback=?',
     success: function(data) {
@@ -80,7 +80,7 @@ var Piece = function(x, y){
           my.draw();
         });
 
-        if(level<4){
+        if(level<3){
           setTimeout(function(){
             location.reload();
           }, 3000);
@@ -88,7 +88,7 @@ var Piece = function(x, y){
         else{
           setTimeout(function(){
             var name = prompt('이름을 입력해주세요','');
-            insertRank(name, level, player.death, player.time);
+            insertRank(name, level, player.time);
             location.reload();
           }, 1000);
         }
