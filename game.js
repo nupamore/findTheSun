@@ -13,7 +13,7 @@ var debut = [
   new Piece(8300, 50),
   new Piece(10450, 450),
 
-  new Weed(1400,300),
+  new Weed(1600,300),
   new Mouse(400 + Math.random()*600,300,10+Math.random()*10),
   new Weed(2300,300),
   new Beetle(4400 + Math.random()*50, 400),
@@ -38,9 +38,9 @@ var regular = [
 var pro = [
   new Weed(600,300),
   new Mouse(1000 + Math.random()*600,300,10+Math.random()*10),
-  new Beetle(1500 + Math.random()*500,200),
-  new Bat(3300 + Math.random()*200,450+Math.random()*50),
-  new Weed(5400,200),
+  new Beetle(1600 + Math.random()*500,200),
+  new Bat(3300 + Math.random()*200,400+Math.random()*50),
+  new Weed(5500,200),
   new Weed(7500,600),
   new Weed(8400,400),
   new Mouse(9100 + Math.random()*400,100,10+Math.random()*10),
@@ -50,12 +50,12 @@ var pro = [
 // Master
 var master = [
   new Mouse(1000,300,10+Math.random()*10),
-  new Weed(2700,300),
+  new Weed(3000,300),
   new Mouse(2100 + Math.random()*600,300,10+Math.random()*10),
   new Mouse(2400 + Math.random()*600,300,10+Math.random()*10),
   new Beetle(2800 + Math.random()*700,300),
   new Weed(4700,300),
-  new Bat(4400,400+Math.random()*10),
+  new Bat(4400,410+Math.random()*10),
   new Weed(5200,200,1.5),
   new Mouse(5100 + Math.random()*400,100,10+Math.random()*10),
   new Weed(6400,200),
@@ -69,16 +69,16 @@ var master = [
 
 // Master +
 var master2 = [
-  new Weed(300,300,1.5),
+  new Weed(400,300,1.5),
   new Mouse(300 + Math.random()*600,300,15+Math.random()*10),
-  new Weed(2600,300,1.5),
+  new Weed(2600,200,1.5),
   new Beetle(1500 + Math.random()*500,600),
-  new Bat(2200 + Math.random()*800,400+Math.random()*50),
+  new Bat(2200 + Math.random()*300,370+Math.random()*50),
   new Beetle(2500 + Math.random()*800,600),
   new Mouse(3200 + Math.random()*600,300,10+Math.random()*10),
-  new Weed(3650,300,1.5),
+  new Weed(3850,200,1.5),
   new Beetle(4400 + Math.random()*200,600),
-  new Weed(5000+Math.random()*200,200),
+  new Weed(5450,200),
   new Weed(5700,200,1.5),
   new Mouse(5400 + Math.random()*400,200,10+Math.random()*10),
   new Beetle(5500 + Math.random()*300,300),
@@ -130,7 +130,8 @@ var player = new Sprite(function(my){
     my.death++;
     my.ay = 0;
     setTimeout(function(){
-      gameStart(level);
+      my.draw(0,100)
+      //gameStart(level);
     }, 100);
   });
 
@@ -192,7 +193,7 @@ var player = new Sprite(function(my){
 
 });
 
-var gameStart = function(lv){  
+var gameStart = function(lv){
   Camera.set(-Camera.x, -Camera.y);
 
   level = lv || 1;

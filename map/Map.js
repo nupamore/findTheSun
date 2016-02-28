@@ -167,6 +167,7 @@ var initMap = function(){
       my.static = true;
       my.gravity = false;
       var directSW = false;
+      var directNumber = 0;
 
       my.animate(resource.bat, 220, 167, {
         left: 0,
@@ -186,21 +187,22 @@ var initMap = function(){
         my.y = y;
         my.state = 'left';
         directSW = false;
-        my.setInterval(function(){
+      });
+
+      my.update(function(){
+        directNumber++;
+        if(directNumber == 100){
           if(directSW == false){
             directSW = true;
           }else if(directSW == true){
             directSW = false;
           }
-        }, 1000);
-
-        my.setInterval(function(){
-          if(directSW == false){
-            my.state = 'rightwalk';
-          }else if(directSW == true){
-            my.state = 'leftwalk';
-          }
-        }, 100);
+        }
+        if(directSW == false){
+          my.state = 'rightwalk';
+        }else if(directSW == true){
+          my.state = 'leftwalk';
+        }
       });
 
       my.remove('crashes');
