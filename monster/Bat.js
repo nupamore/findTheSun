@@ -49,6 +49,7 @@ var Bat = function(x, y, speed){
 
       if(target.tag == 'player'){
         if(direction == 'top'){
+          BGM.sePlay(2,7);
           my.dead();
         }else{
           target.dead();

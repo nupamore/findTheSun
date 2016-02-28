@@ -77,7 +77,7 @@ var master2 = [
   new Bat(2300 + Math.random()*100,300+Math.random()*50),
   new Beetle(2500 + Math.random()*800,600),
   new Mouse(3200 + Math.random()*600,300,15+Math.random()*10),
-  new Weed(3500,300,1.2,500,1500),
+  new Weed(3500,300,1.2,500,1700),
   new Weed(3850,200,1,500),
   new Beetle(4400 + Math.random()*200,600),
   new Weed(4400,400,1.2,500),
@@ -138,8 +138,8 @@ var player = new Sprite(function(my){
     my.ay = 0;
     my.time = 0;
     setTimeout(function(){
-      my.draw(0,100)
-      //gameStart(level);
+      //my.draw(0,100)
+      gameStart(level);
     }, 100);
   });
 
