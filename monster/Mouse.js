@@ -18,11 +18,13 @@ var Mouse = function(x, y, speed, w, h){
       }else if(directSW == true){
         my.state = 'leftwalk';
       }
+      if(my.ay>20) my.dead();
     });
 
     my.start(function(){
       my.x = x;
       my.y = y;
+      my.ay = 0;
     });
     /*
     my.animate(resource.mouse, 18, 18, {
@@ -36,7 +38,7 @@ var Mouse = function(x, y, speed, w, h){
       rightbehave: 2
     }, 4);
     */
-    my.animate(resource.beetle, 137, 191, {
+    my.animate(resource.mouse, 137, 191, {
       left: 1,
       leftRun: 1,
       leftJump: 1,

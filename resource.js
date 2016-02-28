@@ -11,10 +11,10 @@ resource.weed = new Image();
 resource.weed.src = 'img/yuko.png';
 
 resource.mouse = new Image();
-resource.mouse.src = 'img/pikachu.png';
+resource.mouse.src = 'img/miria.png';
 
 resource.beetle = new Image();
-resource.beetle.src = 'img/miria.png';
+resource.beetle.src = 'img/mayu.png';
 
 // background
 resource.bg2 = new Image();

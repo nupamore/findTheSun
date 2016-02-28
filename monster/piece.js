@@ -50,6 +50,12 @@ var Piece = function(x, y){
       if(target.tag == 'player'){
         my.dead();
         target.havepiece += 1;
+        // 지나간 스프라이트 삭제
+        for(var i in sprites){
+          if(sprites[i].x<-100){
+            sprites[i].dead();
+          }
+        }
       }
 
       if(target.havepiece == 4){

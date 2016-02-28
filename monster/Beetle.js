@@ -18,6 +18,7 @@ var Beetle = function(x, y){
       my.x = x;
       my.y = y;
       my.ax = 0;
+      my.ay = 0;
     });
 
     my.update(function(){
@@ -41,6 +42,7 @@ var Beetle = function(x, y){
           }
         }
       }
+      if(my.ay>20) my.dead();
     });
 
     my.animate(resource.beetle, 137, 191, {
@@ -50,7 +52,7 @@ var Beetle = function(x, y){
       right: 0,
       rightRun: 0,
       rightJump: 0
-    }, 10, [30,5,0,5]);
+    }, 9, [30,5,0,5]);
 
     my.remove('crashes');
 
