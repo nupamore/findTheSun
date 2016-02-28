@@ -3,8 +3,13 @@ var clearStage = 0;
 var level;
 
 BGM.new('bgm/ganba.mp3', 1);
-BGM.newSe('bgm/yameru.mp3',2);
+BGM.new('bgm/ending.mp3', 2);
+
 BGM.newSe('bgm/shot.mp3',1);
+BGM.newSe('bgm/yameru.mp3',2);
+BGM.newSe('bgm/nice.mp3',3);
+BGM.newSe('bgm/jump.mp3',4);
+BGM.newSe('bgm/star.mp3',5);
 initMap();
 
 // Debut
@@ -152,6 +157,7 @@ var player = new Sprite(function(my){
     if(my.ay>20) my.dead();
   });
   my.onDead(function(){
+    BGM.sePlay(3,10);
     my.death++;
     my.ay = 0;
     my.time = 0;
@@ -233,7 +239,9 @@ var gameStart = function(lv){
   player.draw(100,200);
   Camera.target = player;
 
-  BGM.play(1, 10, false);
+  setTimeout(function(){
+    BGM.play(1, 10, false);
+  }, 500);
 
   for(var i in debut){
     debut[i].draw();

@@ -20,7 +20,7 @@ var Bat = function(x, y, speed){
       right: 0,
       rightRun: 1,
       rightJump: 0
-    }, 5,[10,2,0,2]);
+    }, 5,[14,8,4,8]);
 
     my.start(function(){
       directSW = false;
@@ -49,7 +49,7 @@ var Bat = function(x, y, speed){
 
       if(target.tag == 'player'){
         if(direction == 'top'){
-          BGM.sePlay(2,7);
+          BGM.sePlay(2,10);
           my.dead();
         }else{
           target.dead();

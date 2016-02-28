@@ -7,7 +7,7 @@ var Weed = function(x, y, speed, d, t){
 
     my.x = x;
     my.y = y;
-    my.width = 35;
+    my.width = 38;
     my.height = 50;
     my.tag = 'monster';
 
@@ -22,7 +22,7 @@ var Weed = function(x, y, speed, d, t){
       rightJump: 0,
       leftbehave: 3,
       rightbehave: 1
-    }, 10, [20, 7, 0, 8]);
+    }, 10, [20, 10, 0, 8]);
 
     my.ani.repeat = true;
 

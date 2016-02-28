@@ -49,6 +49,7 @@ var Piece = function(x, y){
     my.onCrash(function(direction, target){
       if(target.tag == 'player'){
         my.dead();
+        BGM.sePlay(5,10);
         target.havepiece += 1;
         // 지나간 스프라이트 삭제
         for(var i in sprites){
@@ -86,10 +87,12 @@ var Piece = function(x, y){
           my.draw();
         });
 
+        $('#bgm').html('');
+        BGM.play(2, 10, false);
         if(level<3){
           setTimeout(function(){
             location.reload();
-          }, 3000);
+          }, 9000);
         }
         else{
           setTimeout(function(){
