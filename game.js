@@ -24,7 +24,7 @@ var debut = [
   new Weed(2300,300),
   new Beetle(4400 + Math.random()*50, 400),
   new Weed(7200,100),
-  new Bat(7500 + Math.random()*300,650+Math.random()*50),
+  new Bat(8000 + Math.random()*300,650+Math.random()*50),
   new Weed(9300,50),
   new Mouse(9300 + Math.random()*200,300,5+Math.random()*10)
 ];
@@ -84,7 +84,7 @@ var master = [
   new Beetle(7400 + Math.random()*500,600),
   new Beetle(7800,600),
   new Weed(8400,550,2,500,1700),
-  new Beetle(8500 + Math.random()*200,100),
+  new Beetle(8500 + Math.random()*200,50),
   new Beetle(8900 + Math.random()*200,100),
   new Weed(9000,100,2,500,1800),
   new Mouse(9100 + Math.random()*400,100,13+Math.random()*10),
