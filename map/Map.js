@@ -3,8 +3,9 @@ var map = [];
 var initMap = function(){
   // background
   var back1 = new Sprite(function(my){
-    my.width = 800;
-    my.height = 600;
+    my.width = canvas.width;
+    my.height = canvas.width/1.4;
+    my.y = -50;
     my.collision = false;
     my.tag = 'background';
     my.alp = 1;
@@ -18,8 +19,9 @@ var initMap = function(){
   });
 
   var back2 = new Sprite(function(my){
-    my.width = 800;
-    my.height = 600;
+    my.width = canvas.width;
+    my.height = canvas.width/1.4;
+    my.y = -50;
     my.collision = false;
     my.tag = 'background';
     my.alp = 0;
@@ -40,8 +42,9 @@ var initMap = function(){
   });
 
   var back3 = new Sprite(function(my){
-    my.width = 800;
-    my.height = 600;
+    my.width = canvas.width;
+    my.height = canvas.width/1.4;
+    my.y = -50;
     my.collision = false;
     my.tag = 'background';
     my.alp = 0;
@@ -62,8 +65,9 @@ var initMap = function(){
   });
 
   var back4 = new Sprite(function(my){
-    my.width = 800;
-    my.height = 600;
+    my.width = canvas.width;
+    my.height = canvas.width/1.4;
+    my.y = -50;
     my.collision = false;
     my.tag = 'background';
     my.alp = 0;
@@ -84,8 +88,9 @@ var initMap = function(){
   });
 
   var back5 = new Sprite(function(my){
-    my.width = 800;
-    my.height = 600;
+    my.width = canvas.width;
+    my.height = canvas.width/1.4;
+    my.y = -50;
     my.collision = false;
     my.tag = 'background';
     my.alp = 0;

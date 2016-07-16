@@ -1,0 +1,319 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- server -->
+    <style>
+      .container{
+        width: 800px;
+      }
+      #button-container{
+        position: absolute;
+        width: 400px;
+        height: 50px;
+      }
+      .button{
+        margin: 10px;
+        color: #bbb;
+        font-size: 20;
+        transition: 0.3s;
+      }
+      .button-disable{
+        margin: 10px;
+        color: #777;
+        font-size: 20;
+        cursor: pointer;
+      }
+      .button:hover {
+        color:#fff;
+        cursor: pointer;
+        font-size: 24;
+      }
+
+      #rank-table{
+        margin: 20px;
+      }
+    </style>
+  </head>
+<body>
+
+<center>
+<div class="container">
+  <br>
+  <br>
+  <canvas id="canvas" width=888 height=500></canvas>
+
+  <br>
+  <br>
+
+</div>
+</center>
+
+
+</body>
+
+
+<!-- game -->
+<script src="resource.js"></script>
+<script src="lib/engine.js"></script>
+<script src="monster/Weed.js"></script>
+<script src="monster/Bat.js"></script>
+<script src="monster/Mouse.js"></script>
+<script src="monster/Beetle.js"></script>
+
+<script>
+
+
+var intro = new Sprite(function(my){
+  my.width = canvas.width;
+  my.height = canvas.width/1.4;
+  my.y = -50;
+  my.collision = false;
+  my.tag = 'background';
+
+  my.renderer(function(){
+    ctx.font = "30px Arial";
+    ctx.fillText("Loading...",10,50);
+    ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
+  });
+
+  my.draw(0, 0);
+});
+
+
+new Sprite(function(my){
+  my.width = 60;
+  my.height = 120;
+
+  my.animate(resource.player, 133, 191, {
+    left: 5,
+    leftRun: 3,
+    leftJump: 2,
+    right: 0,
+    rightRun: 1,
+    rightJump: 0
+  }, 8, [10,15,0,15]);
+}).draw(50,30);
+new Sprite(function(my){
+  my.width = 20;
+  my.height = 60;
+
+  my.animate(resource.player, 133, 191, {
+    left: 5,
+    leftRun: 3,
+    leftJump: 2,
+    right: 0,
+    rightRun: 1,
+    rightJump: 0
+  }, 8, [10,15,0,15]);
+}).draw(60,170);
+
+
+new Sprite(function(my){
+  my.width = 60;
+  my.height = 120;
+
+  my.animate(resource.player, 133, 191, {
+    left: 2,
+    leftRun: 5,
+    leftJump: 3,
+    right: 0,
+    rightRun: 1,
+    rightJump: 1
+  }, 8, [10,15,0,15]);
+}).draw(150,30);
+new Sprite(function(my){
+  my.width = 20;
+  my.height = 60;
+
+  my.animate(resource.player, 133, 191, {
+    left: 2,
+    leftRun: 5,
+    leftJump: 3,
+    right: 0,
+    rightRun: 1,
+    rightJump: 1
+  }, 8, [10,15,0,15]);
+}).draw(160,170);
+
+
+new Sprite(function(my){
+  my.width = 60;
+  my.height = 120;
+
+  my.animate(resource.player, 133, 191, {
+    left: 2,
+    leftRun: 3,
+    leftJump: 5,
+    right: 0,
+    rightRun: 1,
+    rightJump: 4
+  }, 8, [10,15,0,15]);
+}).draw(250,30);
+new Sprite(function(my){
+  my.width = 20;
+  my.height = 60;
+
+  my.animate(resource.player, 133, 191, {
+    left: 2,
+    leftRun: 3,
+    leftJump: 5,
+    right: 0,
+    rightRun: 1,
+    rightJump: 4
+  }, 8, [10,15,0,15]);
+}).draw(260,170);
+
+
+new Sprite(function(my){
+  my.width = 70;
+  my.height = 80;
+
+  my.animate(resource.beetle, 137, 191, {
+    left: 1,
+    leftRun: 1,
+    leftJump: 1,
+    right: 0,
+    rightRun: 0,
+    rightJump: 0
+  }, 9, [30,5,0,5]);
+}).draw(500,70);
+new Sprite(function(my){
+  my.width = 30;
+  my.height = 25;
+
+  my.animate(resource.beetle, 137, 191, {
+    left: 1,
+    leftRun: 1,
+    leftJump: 1,
+    right: 0,
+    rightRun: 0,
+    rightJump: 0
+  }, 9, [30,5,0,5]);
+}).draw(510,200);
+
+
+new Sprite(function(my){
+  my.width = 60;
+  my.height = 70;
+
+  my.animate(resource.mouse, 137, 191, {
+    left: 1,
+    leftRun: 1,
+    leftJump: 1,
+    right: 0,
+    rightRun: 0,
+    rightJump: 0
+  }, 10, [25,5,0,5]);
+}).draw(600,70);
+new Sprite(function(my){
+  my.width = 30;
+  my.height = 30;
+
+  my.animate(resource.mouse, 137, 191, {
+    left: 1,
+    leftRun: 1,
+    leftJump: 1,
+    right: 0,
+    rightRun: 0,
+    rightJump: 0
+  }, 10, [25,5,0,5]);
+}).draw(610,200);
+
+
+new Sprite(function(my){
+  my.width = 78;
+  my.height = 100;
+
+  my.animate(resource.weed, 165, 235, {
+    left: 0,
+    leftRun: 1,
+    leftJump: 0,
+    right: 0,
+    rightRun: 2,
+    rightJump: 0,
+    leftbehave: 3,
+    rightbehave: 1
+  }, 10, [20, 10, 0, 8]);
+}).draw(50,270);
+new Sprite(function(my){
+  my.width = 38;
+  my.height = 50;
+
+  my.animate(resource.weed, 165, 235, {
+    left: 0,
+    leftRun: 1,
+    leftJump: 0,
+    right: 0,
+    rightRun: 2,
+    rightJump: 0,
+    leftbehave: 3,
+    rightbehave: 1
+  }, 10, [20, 10, 0, 8]);
+}).draw(60,400);
+
+
+new Sprite(function(my){
+  my.width = 78;
+  my.height = 100;
+  my.state = 'rightbehave';
+
+  my.animate(resource.weed, 165, 235, {
+    left: 0,
+    leftRun: 1,
+    leftJump: 0,
+    right: 0,
+    rightRun: 2,
+    rightJump: 0,
+    leftbehave: 3,
+    rightbehave: 1
+  }, 10, [20, 10, 0, 8]);
+}).draw(150,270);
+new Sprite(function(my){
+  my.width = 38;
+  my.height = 50;
+  my.state = 'rightbehave';
+
+  my.animate(resource.weed, 165, 235, {
+    left: 0,
+    leftRun: 1,
+    leftJump: 0,
+    right: 0,
+    rightRun: 2,
+    rightJump: 0,
+    leftbehave: 3,
+    rightbehave: 1
+  }, 10, [20, 10, 0, 8]);
+}).draw(160,400);
+
+
+new Sprite(function(my){
+  my.width = 100;
+  my.height = 40;
+
+  my.animate(resource.bat, 220, 167, {
+    left: 0,
+    leftRun: 0,
+    leftJump: 0,
+    right: 0,
+    rightRun: 1,
+    rightJump: 0
+  }, 5, [40,5,5,5]);
+}).draw(400,320);
+new Sprite(function(my){
+  my.width = 40;
+  my.height = 22;
+
+  my.animate(resource.bat, 220, 167, {
+    left: 0,
+    leftRun: 0,
+    leftJump: 0,
+    right: 0,
+    rightRun: 1,
+    rightJump: 0
+  }, 5,[14,8,4,8]);
+}).draw(410,400);
+
+</script>
+
+</html>
