@@ -1,0 +1,161 @@
+﻿<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- server -->
+    <script>
+      var viewRank = function(){
+        $.ajax({
+          dataType: 'jsonp',
+          jsonp: 'callback',
+          url: 'http://nupa.fun25.co.kr:17903/view',
+          success: function(data) {
+            var text = '<table id=rank-table cellspacing=15>';
+            text += '<tr>';
+            text += '<td> rank </td><td> name </td><td> level </td><td> time </td>';
+            text += '</tr>';
+            for(var i in data){
+              if(i>19) continue;
+              var levelName = {
+                1:'Debut',
+                2:'Regular',
+                3:'Pro',
+                4:'Master',
+                5:'Master+'
+              }[data[i].level];
+              text += '<tr>';
+              text += '<td>' +(i*1+1)+ '</td><td>' + data[i].player +'</td><td>'+ levelName +'</td><td>'+ data[i].time/1000 + 's </td>';
+              text += '</tr>';
+            }
+            text += '</table>';
+            $('#rank-container').html(text);
+          }
+        });
+      };
+    </script>
+    <style>
+      .container{
+        width: 800px;
+      }
+      #button-container{
+        position: absolute;
+        width: 400px;
+        height: 50px;
+        top: 330px;
+      }
+      .button{
+        margin: 10px;
+        color: #bbb;
+        font-size: 20;
+        transition: 0.3s;
+      }
+      .button-disable{
+        margin: 10px;
+        color: #777;
+        font-size: 20;
+        cursor: pointer;
+      }
+      .button:hover {
+        color:#fff;
+        cursor: pointer;
+        font-size: 24;
+      }
+
+      #rank-table{
+        margin: 20px;
+      }
+    </style>
+  </head>
+<body>
+
+<center>
+<div class="container">
+  <div style="font-size:5">
+    <p>이 게임은 학습을 목적으로 개발되었으며 영리적인 목적은 가지고 있지 않습니다. 일부 이미지의 저작권은 '주식회사 반다이남코 엔터테이먼트'에 있습니다.</p>
+    <p>このゲームは、学習を目的に開発され、営利的な目的は持っていません。一部の画像の著作権は、「株式会社バンダイナムコエンターテインメント」にあります。</p>
+  </div>
+
+  <!--<canvas id="canvas" width=1066 height=600></canvas>-->
+  <canvas id="canvas" width=888 height=500></canvas>
+
+  <div id="button-container">
+    <div class="button">Debut</div>
+    <div class="button-disable">Regular</div>
+    <div class="button-disable">Pro</div>
+    <div class="button-disable">Master</div>
+    <div class="button-disable">Master+</div>
+  </div>
+  <br>
+  <br>
+  <p>목표 : 별 5개 먹기<br>조작 : 방향키</p>
+  <span style="color:red">랭킹 등록은 Pro난이도부터 가능합니다.</span>
+  <div id="rank-container">
+
+  </div>
+</div>
+<!--div id="bgm">
+  <iframe width="300" height="25" src="http://www.youtube.com/embed/vE8Df0k-mD4?autoplay=1&playlist=vE8Df0k-mD4&loop=1&showinfo=0&fs=0&rel=0" frameborder="0" allowfullscreen></iframe>
+</div-->
+</center>
+
+
+</body>
+
+
+<!-- game -->
+<script src="resource.js"></script>
+<script src="lib/engine.js"></script>
+<script src="monster/weed.js"></script>
+<script src="monster/bat.js"></script>
+<script src="monster/mouse.js"></script>
+<script src="monster/beetle.js"></script>
+<script src="monster/piece.js"></script>
+<script src="map/map.js"></script>
+
+<script src="game.js"></script>
+<script>
+
+clearStage = localStorage.getItem('clearStage') || 1;
+viewRank();
+
+for(var i=0; i<clearStage; i++){
+  if($('.button-disable')[0])
+    $('.button-disable')[0].className = 'button';
+};
+
+var intro = new Sprite(function(my){
+  my.width = canvas.width;
+  my.height = canvas.width/1.4;
+  my.y = -50;
+  my.collision = false;
+  my.tag = 'background';
+
+  my.renderer(function(){
+    ctx.font = "30px Arial";
+    ctx.fillText("Loading...",10,50);
+    ctx.drawImage(resource.bg1, my.x, my.y, my.width, my.height);
+    ctx.drawImage(resource.intro, (canvas.width-666)/2, 0, 666, 500);
+  });
+
+  my.draw(0, 0);
+});
+
+$('.button').click(function(){
+  var level = {
+    'Debut': 1,
+    'Regular': 2,
+    'Pro': 3,
+    'Master': 4,
+    'Master+' : 5
+  }[$(this).text()];
+
+  $('#button-container').hide();
+
+  intro.dead();
+  gameStart(level);
+
+  //$('#bgm').html('<iframe width="300" height="25" src="http://www.youtube.com/embed/zBgy4lrOdt4?autoplay=1&playlist=zBgy4lrOdt4&loop=1&showinfo=0&fs=0&rel=0" frameborder="0" allowfullscreen></iframe>');
+});
+</script>
+
+</html>
