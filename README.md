@@ -2,5 +2,5 @@
 
 ![thumb](img/thumb.png)  
 
-링크: http://nupamore.github.io/fts  
+링크: http://MCStudy.github.io/findTheSun  
 엔진: https://github.com/MCStudy/MCS-Engine  
