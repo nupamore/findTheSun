@@ -3,7 +3,7 @@ var insertRank = function(player, level, time){
     dataType: 'jsonp',
     data: 'rank={"player":"'+player+'", "level":'+level+', "time":'+time+'}',
     jsonp: 'callback',
-    url: 'http://nupa.fun25.co.kr:17903/insert?callback=?',
+    url: 'http://jjpt.ga:3001/insert?callback=?',
     success: function(data) {
       console.log(data);
     }
